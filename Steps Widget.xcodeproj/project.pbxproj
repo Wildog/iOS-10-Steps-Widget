@@ -21,10 +21,10 @@
 		1552D8C01D8C845300673910 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154D243D1D8C431300ACEC46 /* HealthKit.framework */; };
 		156A78DE1D8D06360041A384 /* stepfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 156A78DD1D8D06360041A384 /* stepfont.ttf */; };
 		156A78DF1D8D06360041A384 /* stepfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 156A78DD1D8D06360041A384 /* stepfont.ttf */; };
-		15E59B511D8DA2C3002D23D0 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E59B4E1D8DA2C3002D23D0 /* LineChartView.m */; };
-		15E59B521D8DA2C3002D23D0 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E59B4E1D8DA2C3002D23D0 /* LineChartView.m */; };
-		15E59B531D8DA2C3002D23D0 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E59B501D8DA2C3002D23D0 /* ChartNodeView.m */; };
-		15E59B541D8DA2C3002D23D0 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E59B501D8DA2C3002D23D0 /* ChartNodeView.m */; };
+		156CBA321D8DB92E00255780 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 156CBA2F1D8DB92E00255780 /* ChartNodeView.m */; };
+		156CBA331D8DB92E00255780 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 156CBA2F1D8DB92E00255780 /* ChartNodeView.m */; };
+		156CBA341D8DB92E00255780 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 156CBA311D8DB92E00255780 /* LineChartView.m */; };
+		156CBA351D8DB92E00255780 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 156CBA311D8DB92E00255780 /* LineChartView.m */; };
 		15E59B581D8DAF44002D23D0 /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E59B571D8DAF44002D23D0 /* UIViewController+NavigationBar.m */; };
 /* End PBXBuildFile section */
 
@@ -73,10 +73,10 @@
 		154D244D1D8C80B300ACEC46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1552D8C11D8C845300673910 /* Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widget.entitlements; sourceTree = "<group>"; };
 		156A78DD1D8D06360041A384 /* stepfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = stepfont.ttf; sourceTree = "<group>"; };
-		15E59B4D1D8DA2C3002D23D0 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineChartView.h; path = "Steps Widget/LineChartView.h"; sourceTree = "<group>"; };
-		15E59B4E1D8DA2C3002D23D0 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineChartView.m; path = "Steps Widget/LineChartView.m"; sourceTree = "<group>"; };
-		15E59B4F1D8DA2C3002D23D0 /* ChartNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChartNodeView.h; path = "Steps Widget/ChartNodeView.h"; sourceTree = "<group>"; };
-		15E59B501D8DA2C3002D23D0 /* ChartNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChartNodeView.m; path = "Steps Widget/ChartNodeView.m"; sourceTree = "<group>"; };
+		156CBA2E1D8DB92E00255780 /* ChartNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChartNodeView.h; path = LineChartView/ChartNodeView.h; sourceTree = "<group>"; };
+		156CBA2F1D8DB92E00255780 /* ChartNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChartNodeView.m; path = LineChartView/ChartNodeView.m; sourceTree = "<group>"; };
+		156CBA301D8DB92E00255780 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineChartView.h; path = LineChartView/LineChartView.h; sourceTree = "<group>"; };
+		156CBA311D8DB92E00255780 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineChartView.m; path = LineChartView/LineChartView.m; sourceTree = "<group>"; };
 		15E59B551D8DAF44002D23D0 /* UIViewController_NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewController_NavigationBar.h; sourceTree = "<group>"; };
 		15E59B561D8DAF44002D23D0 /* UIViewController+NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBar.h"; sourceTree = "<group>"; };
 		15E59B571D8DAF44002D23D0 /* UIViewController+NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBar.m"; sourceTree = "<group>"; };
@@ -160,10 +160,10 @@
 		15E59B481D8DA222002D23D0 /* LineChartView */ = {
 			isa = PBXGroup;
 			children = (
-				15E59B4D1D8DA2C3002D23D0 /* LineChartView.h */,
-				15E59B4E1D8DA2C3002D23D0 /* LineChartView.m */,
-				15E59B4F1D8DA2C3002D23D0 /* ChartNodeView.h */,
-				15E59B501D8DA2C3002D23D0 /* ChartNodeView.m */,
+				156CBA2E1D8DB92E00255780 /* ChartNodeView.h */,
+				156CBA2F1D8DB92E00255780 /* ChartNodeView.m */,
+				156CBA301D8DB92E00255780 /* LineChartView.h */,
+				156CBA311D8DB92E00255780 /* LineChartView.m */,
 			);
 			name = LineChartView;
 			sourceTree = "<group>";
@@ -292,8 +292,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				154D24491D8C80B300ACEC46 /* TodayViewController.m in Sources */,
-				15E59B541D8DA2C3002D23D0 /* ChartNodeView.m in Sources */,
-				15E59B521D8DA2C3002D23D0 /* LineChartView.m in Sources */,
+				156CBA331D8DB92E00255780 /* ChartNodeView.m in Sources */,
+				156CBA351D8DB92E00255780 /* LineChartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,12 +301,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15E59B531D8DA2C3002D23D0 /* ChartNodeView.m in Sources */,
+				156CBA321D8DB92E00255780 /* ChartNodeView.m in Sources */,
 				154D24281D8C3D6300ACEC46 /* AppDelegate.m in Sources */,
 				15E59B581D8DAF44002D23D0 /* UIViewController+NavigationBar.m in Sources */,
 				154D242F1D8C3D6300ACEC46 /* main.m in Sources */,
 				154D24301D8C3D6300ACEC46 /* ViewController.m in Sources */,
-				15E59B511D8DA2C3002D23D0 /* LineChartView.m in Sources */,
+				156CBA341D8DB92E00255780 /* LineChartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
