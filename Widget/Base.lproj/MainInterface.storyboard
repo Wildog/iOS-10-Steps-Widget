@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="stepfont.ttf">
+            <string>stepfont</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
+                        <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="290"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hzj-r8-0Li" customClass="LineChartView">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="170" id="r1l-50-THe"/>
+                                </constraints>
+                            </view>
+                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyO-ei-GUy">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="NEh-Ex-chR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="stepfont" family="stepfont" pointSize="24"/>
+                                <color key="textColor" red="0.25098040700000002" green="0.25098040700000002" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBA-tB-EMM">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="81" id="CS3-Dg-tTh"/>
+                                    <constraint firstAttribute="width" constant="349" id="ZoN-Hf-RLd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Hzj-r8-0Li" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="-20" id="3jg-rd-KFR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Hzj-r8-0Li" secondAttribute="trailing" constant="-20" id="7Ve-07-iGq"/>
+                            <constraint firstItem="EyO-ei-GUy" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="JMO-Q7-7tI"/>
+                            <constraint firstItem="XBA-tB-EMM" firstAttribute="centerX" secondItem="Hzj-r8-0Li" secondAttribute="centerX" id="NB8-nr-MRr"/>
+                            <constraint firstItem="EyO-ei-GUy" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="-20" id="UzF-3u-Rfj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EyO-ei-GUy" secondAttribute="trailing" constant="-20" id="VoZ-uq-olg"/>
+                            <constraint firstItem="XBA-tB-EMM" firstAttribute="centerY" secondItem="Hzj-r8-0Li" secondAttribute="centerY" constant="-10" id="oCa-Z5-A0h"/>
+                            <constraint firstItem="Hzj-r8-0Li" firstAttribute="top" secondItem="EyO-ei-GUy" secondAttribute="bottom" constant="3" id="uIt-fs-KQX"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="290"/>
+                    <connections>
+                        <outlet property="errorLabel" destination="XBA-tB-EMM" id="biR-Xn-rKT"/>
+                        <outlet property="label" destination="EyO-ei-GUy" id="Upd-1d-pwf"/>
+                        <outlet property="lineChartView" destination="Hzj-r8-0Li" id="4qN-a6-OIW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="33.600000000000001" y="52.173913043478265"/>
+        </scene>
+    </scenes>
+</document>

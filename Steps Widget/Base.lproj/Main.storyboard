@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="stepfont.ttf">
+            <string>stepfont</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyf-To-IsA" customClass="LineChartView">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="H6T-LG-nNT"/>
+                                </constraints>
+                            </view>
+                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcf-QX-iYp">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="931-Fy-wpL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="stepfont" family="stepfont" pointSize="17"/>
+                                <color key="textColor" red="0.25098040699958801" green="0.25098040699958801" blue="0.25098040699958801" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="On9-zo-HGX"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ufe-bk-9no">
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3R-mu-jZO">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Gbd-T5-8ru"/>
+                                    <constraint firstAttribute="width" constant="15" id="LpH-nr-eIr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.43760016029999999" green="0.43760016029999999" blue="0.43760016029999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jV-Lz-9zH">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="80F-Tg-fcK"/>
+                                    <constraint firstAttribute="height" constant="21" id="Qks-qf-1zd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.43760016029999999" green="0.43760016029999999" blue="0.43760016029999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="On9-zo-HGX" firstAttribute="top" secondItem="zyf-To-IsA" secondAttribute="bottom" constant="16" id="0Ck-Eu-pKG"/>
+                            <constraint firstItem="Ufe-bk-9no" firstAttribute="leading" secondItem="G3R-mu-jZO" secondAttribute="trailing" constant="9" id="7dt-75-M4X"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Bcf-QX-iYp" secondAttribute="trailing" constant="5" id="8Ex-aR-ftM"/>
+                            <constraint firstItem="zyf-To-IsA" firstAttribute="top" secondItem="Bcf-QX-iYp" secondAttribute="bottom" constant="1" id="8qr-FK-cvq"/>
+                            <constraint firstItem="Ufe-bk-9no" firstAttribute="top" secondItem="On9-zo-HGX" secondAttribute="bottom" constant="12" id="HaR-uM-JpC"/>
+                            <constraint firstItem="0jV-Lz-9zH" firstAttribute="top" secondItem="On9-zo-HGX" secondAttribute="bottom" constant="14" id="L43-41-FCG"/>
+                            <constraint firstItem="Bcf-QX-iYp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Lkj-p6-huW"/>
+                            <constraint firstItem="G3R-mu-jZO" firstAttribute="leading" secondItem="0jV-Lz-9zH" secondAttribute="trailing" constant="1" id="U4w-mR-1IC"/>
+                            <constraint firstItem="G3R-mu-jZO" firstAttribute="top" secondItem="On9-zo-HGX" secondAttribute="bottom" constant="14" id="hd8-fZ-Sck"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Bcf-QX-iYp" secondAttribute="leading" constant="5" id="tLJ-G6-bvc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zyf-To-IsA" secondAttribute="trailing" constant="-16" id="whE-bG-lEs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ufe-bk-9no" secondAttribute="trailing" id="xLa-u2-oSg"/>
+                            <constraint firstItem="zyf-To-IsA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="yYO-zo-RFy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="On9-zo-HGX" secondAttribute="trailing" id="ycL-If-Jy9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="kmLabel" destination="Ufe-bk-9no" id="o1x-zG-hno"/>
+                        <outlet property="label" destination="Bcf-QX-iYp" id="xCb-Nv-n1n"/>
+                        <outlet property="lineChartView" destination="zyf-To-IsA" id="bHu-H4-tfC"/>
+                        <outlet property="miLabel" destination="0jV-Lz-9zH" id="rx0-TZ-neY"/>
+                        <outlet property="unitSwitch" destination="On9-zo-HGX" id="Yar-e0-1Zs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+        </scene>
+    </scenes>
+</document>
