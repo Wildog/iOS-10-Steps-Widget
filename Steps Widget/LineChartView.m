@@ -38,7 +38,6 @@
     self.marginV = 15;
     self.backgroundColor = [UIColor clearColor];
     self.backgroundLineWidth = 0.5;
-    //self.backgroundLineColor = [UIColor colorWithHue:0 saturation:0 brightness:0.59 alpha:0.3];
     self.backgroundLineColor = [UIColor colorWithHue:0 saturation:0 brightness:0.8 alpha:0.3];
     self.labelColor = [UIColor colorWithHue:0 saturation:0 brightness:0.5 alpha:1];
     self.chartLineColor = [UIColor colorWithHue:0.52 saturation:1 brightness:0.83 alpha:1];
@@ -59,6 +58,11 @@
 
 - (void)loadData {
     _lastSelected = [self.dataSource numberOfElements] - 1;
+    _dataLoaded = YES;
+    [self setNeedsDisplay];
+}
+
+- (void)loadDataWithSelectedKept {
     _dataLoaded = YES;
     [self setNeedsDisplay];
 }

@@ -9,6 +9,7 @@
 #import <HealthKit/HealthKit.h>
 #import "ViewController.h"
 #import "LineChartView.h"
+#import "UIViewController_NavigationBar.h"
 
 @interface ViewController () <LineChartViewDataSource, LineChartViewDelegate> {
     NSArray *_elementValues;
@@ -16,12 +17,13 @@
     NSArray *_elementDistances;
     NSArray *_elementFlights;
     NSUInteger _numberCount;
+    NSUInteger _lastSelected;
     CGFloat _maxValue;
     CGFloat _minValue;
     NSDateFormatter *_formatter;
     NSString *_unit;
     NSUserDefaults *_shared;
-    BOOL _labelChanged;
+    BOOL _errorOccurred;
 }
 
 @property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
@@ -37,11 +39,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _labelChanged = NO;
+    _errorOccurred = NO;
     _numberCount = 7;
+    _lastSelected = _numberCount - 1;
     _maxValue = _minValue = 0;
     _shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
     self.healthStore = [[HKHealthStore alloc] init];
+    self.navigationItem.title = @"Steps";
     _formatter = [[NSDateFormatter alloc] init];
     [_formatter setDateFormat:@"M/d"];
     
@@ -65,14 +69,17 @@
     [self.lineChartView setDataSource:self];
     [self.lineChartView setDelegate:self];
     [self.unitSwitch addTarget:self action:@selector(unitSwitched:) forControlEvents:UIControlEventValueChanged];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadAfterFirstTime) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    if (!_labelChanged) {
-        [self.lineChartView setNeedsDisplay];
-    }
-    _labelChanged = NO;
+- (BOOL)hasCustomNavigationBar {
+    return YES;
+}
+
+- (void)loadAfterFirstTime {
+    [self.lineChartView setAnimated:NO];
+    [self readHealthKitData];
 }
 
 - (void)unitSwitched:(id)sender {
@@ -133,6 +140,7 @@
         NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:beginDate endDate:endDate options:HKQueryOptionStrictStartDate];
         
         HKStatisticsQuery *squery = [[HKStatisticsQuery alloc] initWithQuantityType:stepType quantitySamplePredicate:predicate options:HKStatisticsOptionCumulativeSum completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
+                if (error != nil) _errorOccurred = YES;
                 HKQuantity *quantity = result.sumQuantity;
                 double step = [quantity doubleValueForUnit:[HKUnit countUnit]];
                 [arrayForValues setObject:[NSNumber numberWithDouble:step] atIndexedSubscript:_numberCount - 1 - i];
@@ -142,12 +150,14 @@
                 dispatch_group_leave(hkGroup);
         }];
         HKStatisticsQuery *fquery = [[HKStatisticsQuery alloc] initWithQuantityType:flightsType quantitySamplePredicate:predicate options:HKStatisticsOptionCumulativeSum completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
+                if (error != nil) _errorOccurred = YES;
                 HKQuantity *quantity = result.sumQuantity;
                 double flight = [quantity doubleValueForUnit:[HKUnit countUnit]];
                 [arrayForFlights setObject:[NSNumber numberWithDouble:flight] atIndexedSubscript:_numberCount - 1 - i];
                 dispatch_group_leave(hkGroup);
         }];
         HKStatisticsQuery *dquery = [[HKStatisticsQuery alloc] initWithQuantityType:distanceType quantitySamplePredicate:predicate options:HKStatisticsOptionCumulativeSum completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
+                if (error != nil) _errorOccurred = YES;
                 HKQuantity *quantity = result.sumQuantity;
                 double distance = [quantity doubleValueForUnit:[HKUnit unitFromString:_unit]];
                 [arrayForDistances setObject:[NSNumber numberWithDouble:distance] atIndexedSubscript:_numberCount - 1 - i];
@@ -163,12 +173,18 @@
         day = [day dateByAddingTimeInterval: -3600 * 24];
     }
     dispatch_group_notify(hkGroup, dispatch_get_main_queue(),^{
-        _elementValues = (NSArray*)arrayForValues;
-        _elementDistances = (NSArray*)arrayForDistances;
-        _elementFlights = (NSArray*)arrayForFlights;
-        _elementLables = (NSArray*)arrayForLabels;
-        [self.lineChartView loadData];
-        [self changeTextWithNodeAtIndex:_numberCount - 1];
+        if (!_errorOccurred && _maxValue > 0) {
+            _elementValues = (NSArray*)arrayForValues;
+            _elementDistances = (NSArray*)arrayForDistances;
+            _elementFlights = (NSArray*)arrayForFlights;
+            _elementLables = (NSArray*)arrayForLabels;
+            [self.lineChartView loadDataWithSelectedKept];
+            [self changeTextWithNodeAtIndex:_lastSelected];
+        } else if (_maxValue <= 0) {
+            self.label.text = @"No data";
+        } else {
+            self.label.text = @"Some error occured";
+        }
     });
 }
 
@@ -216,7 +232,7 @@
 
 - (void)clickedNodeAtIndex:(NSUInteger)index {
     [self changeTextWithNodeAtIndex:index];
-    _labelChanged = YES;
+    _lastSelected = index;
 }
 
 - (void)changeTextWithNodeAtIndex:(NSUInteger)index {

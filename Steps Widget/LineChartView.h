@@ -30,6 +30,7 @@
 @property (nonatomic, weak) id<LineChartViewDelegate> delegate;
 
 - (void)loadData;
+- (void)loadDataWithSelectedKept;
 
 @end
 

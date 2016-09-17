@@ -11,8 +11,6 @@
 		154D24291D8C3D6300ACEC46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 154D241B1D8C3D6300ACEC46 /* Assets.xcassets */; };
 		154D242A1D8C3D6300ACEC46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154D241C1D8C3D6300ACEC46 /* LaunchScreen.storyboard */; };
 		154D242B1D8C3D6300ACEC46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154D241E1D8C3D6300ACEC46 /* Main.storyboard */; };
-		154D242C1D8C3D6300ACEC46 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24211D8C3D6300ACEC46 /* ChartNodeView.m */; };
-		154D242E1D8C3D6300ACEC46 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24241D8C3D6300ACEC46 /* LineChartView.m */; };
 		154D242F1D8C3D6300ACEC46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24251D8C3D6300ACEC46 /* main.m */; };
 		154D24301D8C3D6300ACEC46 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24271D8C3D6300ACEC46 /* ViewController.m */; };
 		154D243E1D8C431300ACEC46 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154D243D1D8C431300ACEC46 /* HealthKit.framework */; };
@@ -20,11 +18,14 @@
 		154D24491D8C80B300ACEC46 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24481D8C80B300ACEC46 /* TodayViewController.m */; };
 		154D244C1D8C80B300ACEC46 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154D244A1D8C80B300ACEC46 /* MainInterface.storyboard */; };
 		154D24501D8C80B300ACEC46 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 154D24431D8C80B300ACEC46 /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		154D24591D8C812500ACEC46 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24561D8C812500ACEC46 /* LineChartView.m */; };
-		154D245A1D8C812500ACEC46 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24581D8C812500ACEC46 /* ChartNodeView.m */; };
 		1552D8C01D8C845300673910 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154D243D1D8C431300ACEC46 /* HealthKit.framework */; };
 		156A78DE1D8D06360041A384 /* stepfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 156A78DD1D8D06360041A384 /* stepfont.ttf */; };
 		156A78DF1D8D06360041A384 /* stepfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 156A78DD1D8D06360041A384 /* stepfont.ttf */; };
+		15E59B511D8DA2C3002D23D0 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E59B4E1D8DA2C3002D23D0 /* LineChartView.m */; };
+		15E59B521D8DA2C3002D23D0 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E59B4E1D8DA2C3002D23D0 /* LineChartView.m */; };
+		15E59B531D8DA2C3002D23D0 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E59B501D8DA2C3002D23D0 /* ChartNodeView.m */; };
+		15E59B541D8DA2C3002D23D0 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E59B501D8DA2C3002D23D0 /* ChartNodeView.m */; };
+		15E59B581D8DAF44002D23D0 /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E59B571D8DAF44002D23D0 /* UIViewController+NavigationBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,11 +59,7 @@
 		154D241B1D8C3D6300ACEC46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		154D241D1D8C3D6300ACEC46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		154D241F1D8C3D6300ACEC46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		154D24201D8C3D6300ACEC46 /* ChartNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartNodeView.h; sourceTree = "<group>"; };
-		154D24211D8C3D6300ACEC46 /* ChartNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartNodeView.m; sourceTree = "<group>"; };
 		154D24221D8C3D6300ACEC46 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		154D24231D8C3D6300ACEC46 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartView.h; sourceTree = "<group>"; };
-		154D24241D8C3D6300ACEC46 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartView.m; sourceTree = "<group>"; };
 		154D24251D8C3D6300ACEC46 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		154D24261D8C3D6300ACEC46 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		154D24271D8C3D6300ACEC46 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -74,12 +71,15 @@
 		154D24481D8C80B300ACEC46 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		154D244B1D8C80B300ACEC46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		154D244D1D8C80B300ACEC46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		154D24551D8C812500ACEC46 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartView.h; sourceTree = "<group>"; };
-		154D24561D8C812500ACEC46 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartView.m; sourceTree = "<group>"; };
-		154D24571D8C812500ACEC46 /* ChartNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartNodeView.h; sourceTree = "<group>"; };
-		154D24581D8C812500ACEC46 /* ChartNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartNodeView.m; sourceTree = "<group>"; };
 		1552D8C11D8C845300673910 /* Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widget.entitlements; sourceTree = "<group>"; };
 		156A78DD1D8D06360041A384 /* stepfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = stepfont.ttf; sourceTree = "<group>"; };
+		15E59B4D1D8DA2C3002D23D0 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineChartView.h; path = "Steps Widget/LineChartView.h"; sourceTree = "<group>"; };
+		15E59B4E1D8DA2C3002D23D0 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineChartView.m; path = "Steps Widget/LineChartView.m"; sourceTree = "<group>"; };
+		15E59B4F1D8DA2C3002D23D0 /* ChartNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChartNodeView.h; path = "Steps Widget/ChartNodeView.h"; sourceTree = "<group>"; };
+		15E59B501D8DA2C3002D23D0 /* ChartNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChartNodeView.m; path = "Steps Widget/ChartNodeView.m"; sourceTree = "<group>"; };
+		15E59B551D8DAF44002D23D0 /* UIViewController_NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewController_NavigationBar.h; sourceTree = "<group>"; };
+		15E59B561D8DAF44002D23D0 /* UIViewController+NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBar.h"; sourceTree = "<group>"; };
+		15E59B571D8DAF44002D23D0 /* UIViewController+NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBar.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +106,9 @@
 		154D24181D8C3D6300ACEC46 /* Steps Widget */ = {
 			isa = PBXGroup;
 			children = (
+				15E59B551D8DAF44002D23D0 /* UIViewController_NavigationBar.h */,
+				15E59B561D8DAF44002D23D0 /* UIViewController+NavigationBar.h */,
+				15E59B571D8DAF44002D23D0 /* UIViewController+NavigationBar.m */,
 				154D24341D8C40BA00ACEC46 /* Steps Widget.entitlements */,
 				154D241B1D8C3D6300ACEC46 /* Assets.xcassets */,
 				154D24221D8C3D6300ACEC46 /* Info.plist */,
@@ -116,10 +119,6 @@
 				154D241A1D8C3D6300ACEC46 /* AppDelegate.m */,
 				154D24261D8C3D6300ACEC46 /* ViewController.h */,
 				154D24271D8C3D6300ACEC46 /* ViewController.m */,
-				154D24231D8C3D6300ACEC46 /* LineChartView.h */,
-				154D24241D8C3D6300ACEC46 /* LineChartView.m */,
-				154D24201D8C3D6300ACEC46 /* ChartNodeView.h */,
-				154D24211D8C3D6300ACEC46 /* ChartNodeView.m */,
 			);
 			path = "Steps Widget";
 			sourceTree = "<group>";
@@ -137,10 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				1552D8C11D8C845300673910 /* Widget.entitlements */,
-				154D24551D8C812500ACEC46 /* LineChartView.h */,
-				154D24561D8C812500ACEC46 /* LineChartView.m */,
-				154D24571D8C812500ACEC46 /* ChartNodeView.h */,
-				154D24581D8C812500ACEC46 /* ChartNodeView.m */,
 				154D24471D8C80B300ACEC46 /* TodayViewController.h */,
 				154D24481D8C80B300ACEC46 /* TodayViewController.m */,
 				154D244A1D8C80B300ACEC46 /* MainInterface.storyboard */,
@@ -153,12 +148,24 @@
 			isa = PBXGroup;
 			children = (
 				156A78DD1D8D06360041A384 /* stepfont.ttf */,
+				15E59B481D8DA222002D23D0 /* LineChartView */,
 				154D24181D8C3D6300ACEC46 /* Steps Widget */,
-				154D24171D8C3D4F00ACEC46 /* Steps Widget.app */,
 				154D24461D8C80B300ACEC46 /* Widget */,
 				154D24311D8C40BA00ACEC46 /* Frameworks */,
+				154D24171D8C3D4F00ACEC46 /* Steps Widget.app */,
 				154D24431D8C80B300ACEC46 /* Widget.appex */,
 			);
+			sourceTree = "<group>";
+		};
+		15E59B481D8DA222002D23D0 /* LineChartView */ = {
+			isa = PBXGroup;
+			children = (
+				15E59B4D1D8DA2C3002D23D0 /* LineChartView.h */,
+				15E59B4E1D8DA2C3002D23D0 /* LineChartView.m */,
+				15E59B4F1D8DA2C3002D23D0 /* ChartNodeView.h */,
+				15E59B501D8DA2C3002D23D0 /* ChartNodeView.m */,
+			);
+			name = LineChartView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,8 +292,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				154D24491D8C80B300ACEC46 /* TodayViewController.m in Sources */,
-				154D245A1D8C812500ACEC46 /* ChartNodeView.m in Sources */,
-				154D24591D8C812500ACEC46 /* LineChartView.m in Sources */,
+				15E59B541D8DA2C3002D23D0 /* ChartNodeView.m in Sources */,
+				15E59B521D8DA2C3002D23D0 /* LineChartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,11 +301,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15E59B531D8DA2C3002D23D0 /* ChartNodeView.m in Sources */,
 				154D24281D8C3D6300ACEC46 /* AppDelegate.m in Sources */,
-				154D242C1D8C3D6300ACEC46 /* ChartNodeView.m in Sources */,
+				15E59B581D8DAF44002D23D0 /* UIViewController+NavigationBar.m in Sources */,
 				154D242F1D8C3D6300ACEC46 /* main.m in Sources */,
-				154D242E1D8C3D6300ACEC46 /* LineChartView.m in Sources */,
 				154D24301D8C3D6300ACEC46 /* ViewController.m in Sources */,
+				15E59B511D8DA2C3002D23D0 /* LineChartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

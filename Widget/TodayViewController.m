@@ -168,7 +168,7 @@
         day = [day dateByAddingTimeInterval: -3600 * 24];
     }
     dispatch_group_notify(hkGroup, dispatch_get_main_queue(),^{
-        if (!_errorOccurred) {
+        if (!_errorOccurred && _maxValue > 0) {
             _elementValues = (NSArray*)arrayForValues;
             _elementDistances = (NSArray*)arrayForDistances;
             _elementFlights = (NSArray*)arrayForFlights;
@@ -177,6 +177,8 @@
             [self changeTextWithNodeAtIndex:_numberCount - 1];
             [_shared setObject:[NSString stringWithFormat:@"\uF3BB  %.0f   \uE801  %.2f %@   \uF148  %.0f F", [(NSNumber*)_elementValues[_numberCount-1] floatValue], [(NSNumber*)_elementDistances[_numberCount-1] floatValue], _unit, [(NSNumber*)_elementFlights[_numberCount-1] floatValue]] forKey:@"snapshot"];
             [_shared synchronize];
+        } else if (_maxValue <= 0) {
+            self.errorLabel.text = @"No data";
         } else {
             self.errorLabel.text = @"Cannot access full Health data from lock screen";
         }
