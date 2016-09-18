@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -14,6 +15,16 @@
 
 @implementation AppDelegate
 
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
+    if ([shortcutItem.type isEqual: @"dog.wil.steps.set-unit-to-km"]) {
+        [shared setObject:@"km" forKey:@"unit"];
+        [shared synchronize];
+    } else if ([shortcutItem.type isEqual: @"dog.wil.steps.set-unit-to-mi"]) {
+        [shared setObject:@"mi" forKey:@"unit"];
+        [shared synchronize];
+    }
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -40,6 +51,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [(ViewController*)self.window.rootViewController checkUnitState];
 }
 
 

@@ -7,34 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1517DA831D8F132F00D8D3D3 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 154D24431D8C80B300ACEC46 /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		153756041D8EE39600E12657 /* Steps iMsgExt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 158E14CF1D8E849D005B0BD4 /* Steps iMsgExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		153756091D8EE6F100E12657 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153756081D8EE6F100E12657 /* HealthKit.framework */; };
+		1537560B1D8EE76B00E12657 /* stepfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1537560A1D8EE76B00E12657 /* stepfont.ttf */; };
+		1537560C1D8EE76B00E12657 /* stepfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1537560A1D8EE76B00E12657 /* stepfont.ttf */; };
+		1537560D1D8EE76B00E12657 /* stepfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1537560A1D8EE76B00E12657 /* stepfont.ttf */; };
 		154D24281D8C3D6300ACEC46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D241A1D8C3D6300ACEC46 /* AppDelegate.m */; };
 		154D24291D8C3D6300ACEC46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 154D241B1D8C3D6300ACEC46 /* Assets.xcassets */; };
 		154D242A1D8C3D6300ACEC46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154D241C1D8C3D6300ACEC46 /* LaunchScreen.storyboard */; };
 		154D242B1D8C3D6300ACEC46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154D241E1D8C3D6300ACEC46 /* Main.storyboard */; };
 		154D242F1D8C3D6300ACEC46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24251D8C3D6300ACEC46 /* main.m */; };
 		154D24301D8C3D6300ACEC46 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24271D8C3D6300ACEC46 /* ViewController.m */; };
-		154D243E1D8C431300ACEC46 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154D243D1D8C431300ACEC46 /* HealthKit.framework */; };
 		154D24451D8C80B300ACEC46 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154D24441D8C80B300ACEC46 /* NotificationCenter.framework */; };
 		154D24491D8C80B300ACEC46 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24481D8C80B300ACEC46 /* TodayViewController.m */; };
 		154D244C1D8C80B300ACEC46 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154D244A1D8C80B300ACEC46 /* MainInterface.storyboard */; };
-		154D24501D8C80B300ACEC46 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 154D24431D8C80B300ACEC46 /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		1552D8C01D8C845300673910 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154D243D1D8C431300ACEC46 /* HealthKit.framework */; };
-		156A78DE1D8D06360041A384 /* stepfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 156A78DD1D8D06360041A384 /* stepfont.ttf */; };
-		156A78DF1D8D06360041A384 /* stepfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 156A78DD1D8D06360041A384 /* stepfont.ttf */; };
-		156CBA321D8DB92E00255780 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 156CBA2F1D8DB92E00255780 /* ChartNodeView.m */; };
-		156CBA331D8DB92E00255780 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 156CBA2F1D8DB92E00255780 /* ChartNodeView.m */; };
-		156CBA341D8DB92E00255780 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 156CBA311D8DB92E00255780 /* LineChartView.m */; };
-		156CBA351D8DB92E00255780 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 156CBA311D8DB92E00255780 /* LineChartView.m */; };
+		158E14D01D8E849D005B0BD4 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 158E14AE1D8E7668005B0BD4 /* Messages.framework */; };
+		158E14D91D8E849D005B0BD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158E14D81D8E849D005B0BD4 /* Assets.xcassets */; };
+		158E14E41D8E84EA005B0BD4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158E14E11D8E84EA005B0BD4 /* MainInterface.storyboard */; };
+		158E14E51D8E84EA005B0BD4 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E31D8E84EA005B0BD4 /* MessagesViewController.m */; };
+		158E14EA1D8E8536005B0BD4 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E61D8E8536005B0BD4 /* LineChartView.m */; };
+		158E14EB1D8E8536005B0BD4 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E61D8E8536005B0BD4 /* LineChartView.m */; };
+		158E14EC1D8E8536005B0BD4 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E61D8E8536005B0BD4 /* LineChartView.m */; };
+		158E14ED1D8E8536005B0BD4 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E91D8E8536005B0BD4 /* ChartNodeView.m */; };
+		158E14EE1D8E8536005B0BD4 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E91D8E8536005B0BD4 /* ChartNodeView.m */; };
+		158E14EF1D8E8536005B0BD4 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E91D8E8536005B0BD4 /* ChartNodeView.m */; };
 		15E59B581D8DAF44002D23D0 /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E59B571D8DAF44002D23D0 /* UIViewController+NavigationBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		154D244E1D8C80B300ACEC46 /* PBXContainerItemProxy */ = {
+		1517DA841D8F132F00D8D3D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 15A1E0A61D8B905C0068151B /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 154D24421D8C80B300ACEC46;
 			remoteInfo = Widget;
+		};
+		153756051D8EE39600E12657 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15A1E0A61D8B905C0068151B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 158E14CE1D8E849D005B0BD4;
+			remoteInfo = "Steps iMsgExt";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -45,7 +59,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				154D24501D8C80B300ACEC46 /* Widget.appex in Embed App Extensions */,
+				1517DA831D8F132F00D8D3D3 /* Widget.appex in Embed App Extensions */,
+				153756041D8EE39600E12657 /* Steps iMsgExt.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,6 +68,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		153756081D8EE6F100E12657 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		1537560A1D8EE76B00E12657 /* stepfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = stepfont.ttf; sourceTree = "<group>"; };
 		154D24171D8C3D4F00ACEC46 /* Steps Widget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Steps Widget.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		154D24191D8C3D6300ACEC46 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		154D241A1D8C3D6300ACEC46 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -64,7 +81,6 @@
 		154D24261D8C3D6300ACEC46 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		154D24271D8C3D6300ACEC46 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		154D24341D8C40BA00ACEC46 /* Steps Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Steps Widget.entitlements"; sourceTree = "<group>"; };
-		154D243D1D8C431300ACEC46 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		154D24431D8C80B300ACEC46 /* Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		154D24441D8C80B300ACEC46 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		154D24471D8C80B300ACEC46 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
@@ -72,11 +88,18 @@
 		154D244B1D8C80B300ACEC46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		154D244D1D8C80B300ACEC46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1552D8C11D8C845300673910 /* Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widget.entitlements; sourceTree = "<group>"; };
-		156A78DD1D8D06360041A384 /* stepfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = stepfont.ttf; sourceTree = "<group>"; };
-		156CBA2E1D8DB92E00255780 /* ChartNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChartNodeView.h; path = LineChartView/ChartNodeView.h; sourceTree = "<group>"; };
-		156CBA2F1D8DB92E00255780 /* ChartNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChartNodeView.m; path = LineChartView/ChartNodeView.m; sourceTree = "<group>"; };
-		156CBA301D8DB92E00255780 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineChartView.h; path = LineChartView/LineChartView.h; sourceTree = "<group>"; };
-		156CBA311D8DB92E00255780 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineChartView.m; path = LineChartView/LineChartView.m; sourceTree = "<group>"; };
+		158E14AE1D8E7668005B0BD4 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		158E14CF1D8E849D005B0BD4 /* Steps iMsgExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Steps iMsgExt.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		158E14D81D8E849D005B0BD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		158E14DA1D8E849D005B0BD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		158E14E11D8E84EA005B0BD4 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		158E14E21D8E84EA005B0BD4 /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
+		158E14E31D8E84EA005B0BD4 /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
+		158E14E61D8E8536005B0BD4 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineChartView.m; path = LineChartView/LineChartView.m; sourceTree = "<group>"; };
+		158E14E71D8E8536005B0BD4 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineChartView.h; path = LineChartView/LineChartView.h; sourceTree = "<group>"; };
+		158E14E81D8E8536005B0BD4 /* ChartNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChartNodeView.h; path = LineChartView/ChartNodeView.h; sourceTree = "<group>"; };
+		158E14E91D8E8536005B0BD4 /* ChartNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChartNodeView.m; path = LineChartView/ChartNodeView.m; sourceTree = "<group>"; };
+		158E14F01D8E857E005B0BD4 /* Steps iMsgExt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Steps iMsgExt.entitlements"; sourceTree = "<group>"; };
 		15E59B551D8DAF44002D23D0 /* UIViewController_NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewController_NavigationBar.h; sourceTree = "<group>"; };
 		15E59B561D8DAF44002D23D0 /* UIViewController+NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBar.h"; sourceTree = "<group>"; };
 		15E59B571D8DAF44002D23D0 /* UIViewController+NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavigationBar.m"; sourceTree = "<group>"; };
@@ -88,7 +111,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				154D24451D8C80B300ACEC46 /* NotificationCenter.framework in Frameworks */,
-				1552D8C01D8C845300673910 /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		158E14CC1D8E849D005B0BD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				158E14D01D8E849D005B0BD4 /* Messages.framework in Frameworks */,
+				153756091D8EE6F100E12657 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +127,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				154D243E1D8C431300ACEC46 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,8 +156,9 @@
 		154D24311D8C40BA00ACEC46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				154D243D1D8C431300ACEC46 /* HealthKit.framework */,
+				153756081D8EE6F100E12657 /* HealthKit.framework */,
 				154D24441D8C80B300ACEC46 /* NotificationCenter.framework */,
+				158E14AE1D8E7668005B0BD4 /* Messages.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -144,26 +175,41 @@
 			path = Widget;
 			sourceTree = "<group>";
 		};
+		158E14D11D8E849D005B0BD4 /* Steps iMsgExt */ = {
+			isa = PBXGroup;
+			children = (
+				158E14F01D8E857E005B0BD4 /* Steps iMsgExt.entitlements */,
+				158E14E11D8E84EA005B0BD4 /* MainInterface.storyboard */,
+				158E14E21D8E84EA005B0BD4 /* MessagesViewController.h */,
+				158E14E31D8E84EA005B0BD4 /* MessagesViewController.m */,
+				158E14D81D8E849D005B0BD4 /* Assets.xcassets */,
+				158E14DA1D8E849D005B0BD4 /* Info.plist */,
+			);
+			path = "Steps iMsgExt";
+			sourceTree = "<group>";
+		};
 		15A1E0A51D8B905C0068151B = {
 			isa = PBXGroup;
 			children = (
-				156A78DD1D8D06360041A384 /* stepfont.ttf */,
+				1537560A1D8EE76B00E12657 /* stepfont.ttf */,
 				15E59B481D8DA222002D23D0 /* LineChartView */,
 				154D24181D8C3D6300ACEC46 /* Steps Widget */,
 				154D24461D8C80B300ACEC46 /* Widget */,
+				158E14D11D8E849D005B0BD4 /* Steps iMsgExt */,
 				154D24311D8C40BA00ACEC46 /* Frameworks */,
 				154D24171D8C3D4F00ACEC46 /* Steps Widget.app */,
 				154D24431D8C80B300ACEC46 /* Widget.appex */,
+				158E14CF1D8E849D005B0BD4 /* Steps iMsgExt.appex */,
 			);
 			sourceTree = "<group>";
 		};
 		15E59B481D8DA222002D23D0 /* LineChartView */ = {
 			isa = PBXGroup;
 			children = (
-				156CBA2E1D8DB92E00255780 /* ChartNodeView.h */,
-				156CBA2F1D8DB92E00255780 /* ChartNodeView.m */,
-				156CBA301D8DB92E00255780 /* LineChartView.h */,
-				156CBA311D8DB92E00255780 /* LineChartView.m */,
+				158E14E61D8E8536005B0BD4 /* LineChartView.m */,
+				158E14E71D8E8536005B0BD4 /* LineChartView.h */,
+				158E14E81D8E8536005B0BD4 /* ChartNodeView.h */,
+				158E14E91D8E8536005B0BD4 /* ChartNodeView.m */,
 			);
 			name = LineChartView;
 			sourceTree = "<group>";
@@ -188,6 +234,23 @@
 			productReference = 154D24431D8C80B300ACEC46 /* Widget.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		158E14CE1D8E849D005B0BD4 /* Steps iMsgExt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 158E14DE1D8E849D005B0BD4 /* Build configuration list for PBXNativeTarget "Steps iMsgExt" */;
+			buildPhases = (
+				158E14CB1D8E849D005B0BD4 /* Sources */,
+				158E14CC1D8E849D005B0BD4 /* Frameworks */,
+				158E14CD1D8E849D005B0BD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Steps iMsgExt";
+			productName = "Steps iMsgExt";
+			productReference = 158E14CF1D8E849D005B0BD4 /* Steps iMsgExt.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
+		};
 		15A1E0AD1D8B905C0068151B /* Steps Widget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15A1E0C51D8B905C0068151B /* Build configuration list for PBXNativeTarget "Steps Widget" */;
@@ -200,7 +263,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				154D244F1D8C80B300ACEC46 /* PBXTargetDependency */,
+				153756061D8EE39600E12657 /* PBXTargetDependency */,
+				1517DA851D8F132F00D8D3D3 /* PBXTargetDependency */,
 			);
 			name = "Steps Widget";
 			productName = LineChart;
@@ -217,6 +281,19 @@
 				ORGANIZATIONNAME = Wildog;
 				TargetAttributes = {
 					154D24421D8C80B300ACEC46 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 842AN99JJH;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
+					};
+					158E14CE1D8E849D005B0BD4 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = 842AN99JJH;
 						ProvisioningStyle = Automatic;
@@ -259,6 +336,7 @@
 			targets = (
 				15A1E0AD1D8B905C0068151B /* Steps Widget */,
 				154D24421D8C80B300ACEC46 /* Widget */,
+				158E14CE1D8E849D005B0BD4 /* Steps iMsgExt */,
 			);
 		};
 /* End PBXProject section */
@@ -268,8 +346,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				156A78DF1D8D06360041A384 /* stepfont.ttf in Resources */,
 				154D244C1D8C80B300ACEC46 /* MainInterface.storyboard in Resources */,
+				1537560C1D8EE76B00E12657 /* stepfont.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		158E14CD1D8E849D005B0BD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1537560D1D8EE76B00E12657 /* stepfont.ttf in Resources */,
+				158E14D91D8E849D005B0BD4 /* Assets.xcassets in Resources */,
+				158E14E41D8E84EA005B0BD4 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,8 +367,8 @@
 			files = (
 				154D242B1D8C3D6300ACEC46 /* Main.storyboard in Resources */,
 				154D24291D8C3D6300ACEC46 /* Assets.xcassets in Resources */,
-				156A78DE1D8D06360041A384 /* stepfont.ttf in Resources */,
 				154D242A1D8C3D6300ACEC46 /* LaunchScreen.storyboard in Resources */,
+				1537560B1D8EE76B00E12657 /* stepfont.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,8 +380,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				154D24491D8C80B300ACEC46 /* TodayViewController.m in Sources */,
-				156CBA331D8DB92E00255780 /* ChartNodeView.m in Sources */,
-				156CBA351D8DB92E00255780 /* LineChartView.m in Sources */,
+				158E14EE1D8E8536005B0BD4 /* ChartNodeView.m in Sources */,
+				158E14EB1D8E8536005B0BD4 /* LineChartView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		158E14CB1D8E849D005B0BD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				158E14E51D8E84EA005B0BD4 /* MessagesViewController.m in Sources */,
+				158E14EF1D8E8536005B0BD4 /* ChartNodeView.m in Sources */,
+				158E14EC1D8E8536005B0BD4 /* LineChartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,22 +399,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				156CBA321D8DB92E00255780 /* ChartNodeView.m in Sources */,
 				154D24281D8C3D6300ACEC46 /* AppDelegate.m in Sources */,
+				158E14ED1D8E8536005B0BD4 /* ChartNodeView.m in Sources */,
+				158E14EA1D8E8536005B0BD4 /* LineChartView.m in Sources */,
 				15E59B581D8DAF44002D23D0 /* UIViewController+NavigationBar.m in Sources */,
 				154D242F1D8C3D6300ACEC46 /* main.m in Sources */,
 				154D24301D8C3D6300ACEC46 /* ViewController.m in Sources */,
-				156CBA341D8DB92E00255780 /* LineChartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		154D244F1D8C80B300ACEC46 /* PBXTargetDependency */ = {
+		1517DA851D8F132F00D8D3D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 154D24421D8C80B300ACEC46 /* Widget */;
-			targetProxy = 154D244E1D8C80B300ACEC46 /* PBXContainerItemProxy */;
+			targetProxy = 1517DA841D8F132F00D8D3D3 /* PBXContainerItemProxy */;
+		};
+		153756061D8EE39600E12657 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 158E14CE1D8E849D005B0BD4 /* Steps iMsgExt */;
+			targetProxy = 153756051D8EE39600E12657 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -369,6 +472,34 @@
 				INFOPLIST_FILE = Widget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dog.wil.steps.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		158E14DF1D8E849D005B0BD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = "Steps iMsgExt/Steps iMsgExt.entitlements";
+				DEVELOPMENT_TEAM = 842AN99JJH;
+				INFOPLIST_FILE = "Steps iMsgExt/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "dog.wil.steps.imsg-ext";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		158E14E01D8E849D005B0BD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = "Steps iMsgExt/Steps iMsgExt.entitlements";
+				DEVELOPMENT_TEAM = 842AN99JJH;
+				INFOPLIST_FILE = "Steps iMsgExt/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "dog.wil.steps.imsg-ext";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -496,6 +627,15 @@
 			buildConfigurations = (
 				154D24521D8C80B300ACEC46 /* Debug */,
 				154D24531D8C80B300ACEC46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		158E14DE1D8E849D005B0BD4 /* Build configuration list for PBXNativeTarget "Steps iMsgExt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				158E14DF1D8E849D005B0BD4 /* Debug */,
+				158E14E01D8E849D005B0BD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

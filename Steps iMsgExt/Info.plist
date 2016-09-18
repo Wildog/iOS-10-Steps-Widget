@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Steps Widget</string>
+	<string>Steps iMsgExt</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -25,16 +25,12 @@
 		<key>NSExtensionMainStoryboard</key>
 		<string>MainInterface</string>
 		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.widget-extension</string>
+		<string>com.apple.message-payload-provider</string>
 	</dict>
 	<key>NSHealthShareUsageDescription</key>
 	<string>Allow Steps Widget to read your daily steps?</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Allow Steps Widget to modify your health data?</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>stepfont.ttf</string>
-	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>healthkit</string>

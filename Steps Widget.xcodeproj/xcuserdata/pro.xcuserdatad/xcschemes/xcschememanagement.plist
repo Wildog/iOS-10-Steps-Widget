@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Steps iMsgExt.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Widget.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,16 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>154D24421D8C80B300ACEC46</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>158E14A91D8E7667005B0BD4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>158E14CE1D8E849D005B0BD4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

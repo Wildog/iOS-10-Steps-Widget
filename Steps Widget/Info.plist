@@ -39,7 +39,26 @@
 		<string>armv7</string>
 		<string>healthkit</string>
 	</array>
-	<key>UISupportedInterfaceOrientations</key>
+	<key>UIApplicationShortcutItems</key>
+    <array>
+        <dict>
+            <key>UIApplicationShortcutItemIconType</key>
+            <string>UIApplicationShortcutIconTypeTask</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>Set Unit to Km</string>
+            <key>UIApplicationShortcutItemType</key>
+            <string>$(PRODUCT_BUNDLE_IDENTIFIER).set-unit-to-km</string>
+        </dict>
+        <dict>
+            <key>UIApplicationShortcutItemIconType</key>
+            <string>UIApplicationShortcutIconTypeTask</string>
+            <key>UIApplicationShortcutItemTitle</key>
+            <string>Set Unit to Mi</string>
+            <key>UIApplicationShortcutItemType</key>
+            <string>$(PRODUCT_BUNDLE_IDENTIFIER).set-unit-to-mi</string>
+        </dict>
+    </array>
+    <key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>

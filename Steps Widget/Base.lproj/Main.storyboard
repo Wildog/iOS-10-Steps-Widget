@@ -62,18 +62,29 @@
                                 <color key="textColor" red="0.43760016029999999" green="0.43760016029999999" blue="0.43760016029999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13M-Qj-DEO">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="xvo-37-7Ul"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="12"/>
+                                <color key="textColor" red="0.27955889699999997" green="0.27955049279999999" blue="0.27955526110000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="On9-zo-HGX" firstAttribute="top" secondItem="zyf-To-IsA" secondAttribute="bottom" constant="16" id="0Ck-Eu-pKG"/>
+                            <constraint firstItem="zyf-To-IsA" firstAttribute="top" secondItem="13M-Qj-DEO" secondAttribute="bottom" constant="10" id="61e-8a-5ru"/>
                             <constraint firstItem="Ufe-bk-9no" firstAttribute="leading" secondItem="G3R-mu-jZO" secondAttribute="trailing" constant="9" id="7dt-75-M4X"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Bcf-QX-iYp" secondAttribute="trailing" constant="5" id="8Ex-aR-ftM"/>
-                            <constraint firstItem="zyf-To-IsA" firstAttribute="top" secondItem="Bcf-QX-iYp" secondAttribute="bottom" constant="1" id="8qr-FK-cvq"/>
                             <constraint firstItem="Ufe-bk-9no" firstAttribute="top" secondItem="On9-zo-HGX" secondAttribute="bottom" constant="12" id="HaR-uM-JpC"/>
                             <constraint firstItem="0jV-Lz-9zH" firstAttribute="top" secondItem="On9-zo-HGX" secondAttribute="bottom" constant="14" id="L43-41-FCG"/>
-                            <constraint firstItem="Bcf-QX-iYp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="52" id="Lkj-p6-huW"/>
                             <constraint firstItem="G3R-mu-jZO" firstAttribute="leading" secondItem="0jV-Lz-9zH" secondAttribute="trailing" constant="1" id="U4w-mR-1IC"/>
+                            <constraint firstItem="Bcf-QX-iYp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="52" id="f4G-FH-XJD"/>
+                            <constraint firstItem="13M-Qj-DEO" firstAttribute="width" secondItem="Bcf-QX-iYp" secondAttribute="width" id="hVA-vf-Je6"/>
                             <constraint firstItem="G3R-mu-jZO" firstAttribute="top" secondItem="On9-zo-HGX" secondAttribute="bottom" constant="14" id="hd8-fZ-Sck"/>
+                            <constraint firstItem="13M-Qj-DEO" firstAttribute="top" secondItem="Bcf-QX-iYp" secondAttribute="bottom" id="mev-6X-avg"/>
+                            <constraint firstItem="13M-Qj-DEO" firstAttribute="centerX" secondItem="Bcf-QX-iYp" secondAttribute="centerX" id="noR-TG-xAa"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Bcf-QX-iYp" secondAttribute="leading" constant="5" id="tLJ-G6-bvc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zyf-To-IsA" secondAttribute="trailing" constant="-16" id="whE-bG-lEs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ufe-bk-9no" secondAttribute="trailing" id="xLa-u2-oSg"/>
@@ -86,6 +97,7 @@
                         <outlet property="label" destination="Bcf-QX-iYp" id="xCb-Nv-n1n"/>
                         <outlet property="lineChartView" destination="zyf-To-IsA" id="bHu-H4-tfC"/>
                         <outlet property="miLabel" destination="0jV-Lz-9zH" id="rx0-TZ-neY"/>
+                        <outlet property="statLabel" destination="13M-Qj-DEO" id="riI-bU-fP8"/>
                         <outlet property="unitSwitch" destination="On9-zo-HGX" id="Yar-e0-1Zs"/>
                     </connections>
                 </viewController>

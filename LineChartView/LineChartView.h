@@ -15,6 +15,7 @@
 @property (nonatomic, assign) CGFloat marginH;
 @property (nonatomic, assign) CGFloat marginV;
 @property (nonatomic, strong) UIColor *backgroundLineColor;
+@property (nonatomic, strong) UIColor *averageLineColor;
 @property (nonatomic, assign) CGFloat backgroundLineWidth;
 @property (nonatomic, strong) NSArray *gradientColors;
 @property (nonatomic, strong) UIColor *chartLineColor;
@@ -25,6 +26,7 @@
 @property (nonatomic, assign) BOOL animated;
 @property (nonatomic, assign) BOOL gradiented;
 @property (nonatomic, assign) BOOL showLabel;
+@property (nonatomic, assign) BOOL showAverageLine;
 
 @property (nonatomic, weak) id<LineChartViewDataSource> dataSource;
 @property (nonatomic, weak) id<LineChartViewDelegate> delegate;
@@ -40,7 +42,9 @@
 - (CGFloat)maxValue;
 - (CGFloat)minValue;
 - (CGFloat)valueForElementAtIndex:(NSUInteger)index;
+@optional
 - (NSString*)labelForElementAtIndex:(NSUInteger)index;
+- (CGFloat)averageValue;
 @end
 
 @protocol LineChartViewDelegate <NSObject>

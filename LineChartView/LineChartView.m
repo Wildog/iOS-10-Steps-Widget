@@ -39,15 +39,19 @@
     self.backgroundColor = [UIColor clearColor];
     self.backgroundLineWidth = 0.5;
     self.backgroundLineColor = [UIColor colorWithHue:0 saturation:0 brightness:0.8 alpha:0.3];
+    self.averageLineColor = [UIColor colorWithHue:0 saturation:0 brightness:0.8 alpha:0.3];
     self.labelColor = [UIColor colorWithHue:0 saturation:0 brightness:0.5 alpha:1];
     self.chartLineColor = [UIColor colorWithHue:0.52 saturation:1 brightness:0.83 alpha:1];
-    self.gradientColors = @[(__bridge id)[UIColor colorWithHue:0.57 saturation:0.74 brightness:0.86 alpha:1].CGColor,(__bridge id)[UIColor colorWithHue:0.52 saturation:1 brightness:0.76 alpha:1].CGColor, (__bridge id)[UIColor colorWithHue:0.52 saturation:1 brightness:0.83 alpha:1].CGColor];
+    self.gradientColors = @[(__bridge id)[UIColor colorWithHue:0.57 saturation:0.74 brightness:0.86 alpha:1].CGColor,
+                            (__bridge id)[UIColor colorWithHue:0.52 saturation:1 brightness:0.76 alpha:1].CGColor,
+                            (__bridge id)[UIColor colorWithHue:0.52 saturation:1 brightness:0.83 alpha:1].CGColor];
     self.chartLineWidth = 3;
     self.nodeSize = 13;
     self.animationDuration = 1.2;
     self.animated = YES;
     self.gradiented = YES;
     self.showLabel = YES;
+    self.showAverageLine = YES;
     _dataLoaded = NO;
 }
 
@@ -97,10 +101,10 @@
         [verticalLine stroke];
         
         //draw labels
-        if (self.showLabel) {
+        if (self.showLabel && [self.delegate respondsToSelector:@selector(labelForElementAtIndex:)]) {
             NSString *labelText   = [self.dataSource labelForElementAtIndex:i];
             UILabel *label        = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, labelWidth, labelHeight)];
-            label.center          = CGPointMake(xPos, self.marginV + chartHeight + 5 + 20);
+            label.center          = CGPointMake(xPos, self.marginV + chartHeight + 10 + 20);
             label.text            = labelText;
             label.font            = [UIFont fontWithName:@"Avenir" size:11.0];
             label.textColor       = self.labelColor;
@@ -130,6 +134,49 @@
     }
     
     if (_dataLoaded) {
+        //draw average line
+        if (self.showAverageLine && [self.delegate respondsToSelector:@selector(averageValue)]) {
+            CGFloat average = [self.dataSource averageValue];
+            CGFloat yPos = self.marginV + chartHeight * (1 - (average - minValue) / (maxValue - minValue));
+            
+            UIBezierPath* averageLine = [UIBezierPath bezierPath];
+            [averageLine moveToPoint: CGPointMake(startX, yPos)];
+            [averageLine addLineToPoint: CGPointMake(self.frame.size.width - self.marginH, yPos)];
+            
+            CAShapeLayer *averageLineShape = [CAShapeLayer layer];
+            averageLineShape.path          = averageLine.CGPath;
+            averageLineShape.lineWidth     = self.backgroundLineWidth;
+            averageLineShape.strokeColor   = self.averageLineColor.CGColor;
+            averageLineShape.fillColor     = [UIColor clearColor].CGColor;
+            averageLineShape.lineCap       = kCALineCapButt;
+            
+            if (self.animated) {
+                CGFloat upBy = chartHeight * (average - minValue) / (maxValue - minValue) + 5;
+                averageLineShape.position = CGPointMake(averageLineShape.position.x, averageLineShape.position.y + upBy);
+                averageLineShape.opacity = 0;
+
+                CASpringAnimation *positionYAnimation  = [CASpringAnimation animationWithKeyPath:@"position.y"];
+                positionYAnimation.beginTime           = CACurrentMediaTime() + self.animationDuration * 3/4;
+                positionYAnimation.duration            = self.animationDuration / 2;
+                positionYAnimation.removedOnCompletion = NO;
+                positionYAnimation.fillMode            = kCAFillModeForwards;
+                positionYAnimation.byValue             = [NSNumber numberWithDouble:-upBy];
+                positionYAnimation.timingFunction      = [CAMediaTimingFunction functionWithControlPoints: 0.299 : 0.000 : 0.292 : 0.910];
+                [averageLineShape addAnimation:positionYAnimation forKey:@"positionYAnimation"];
+                
+                CABasicAnimation *opacityAnimation   = [CABasicAnimation animationWithKeyPath:@"opacity"];
+                opacityAnimation.beginTime           = CACurrentMediaTime() + self.animationDuration * 3/4;
+                opacityAnimation.duration            = self.animationDuration / 2;
+                opacityAnimation.removedOnCompletion = NO;
+                opacityAnimation.fillMode            = kCAFillModeForwards;
+                opacityAnimation.byValue             = [NSNumber numberWithDouble:1];
+                opacityAnimation.timingFunction      = [CAMediaTimingFunction functionWithControlPoints: 0.090 : 0.271 : 0.223 : 0.841];
+                [averageLineShape addAnimation:opacityAnimation forKey:@"opacityAnimation"];
+            }
+            [self.layer addSublayer:averageLineShape];
+        }
+    
+        //draw chart line shape masked gradient layer
         CAShapeLayer *chartLineShape = [CAShapeLayer layer];
         chartLineShape.path          = chartLine.CGPath;
         chartLineShape.lineWidth     = self.chartLineWidth;
@@ -160,6 +207,7 @@
         [self.layer addSublayer:gradientLayer];
         gradientLayer.mask = chartLineShape;
         
+        //popup animation for nodes
         CGFloat delay = 0;
         CGFloat delta = self.animationDuration / (numberCount + 1);
         for (ChartNodeView* node in nodesArray) {
