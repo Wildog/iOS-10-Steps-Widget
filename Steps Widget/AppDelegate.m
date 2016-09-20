@@ -17,6 +17,7 @@
 
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
     NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
+    NSLog(@"%@", shortcutItem.type);
     if ([shortcutItem.type isEqual: @"dog.wil.steps.set-unit-to-km"]) {
         [shared setObject:@"km" forKey:@"unit"];
         [shared synchronize];
@@ -24,10 +25,29 @@
         [shared setObject:@"mi" forKey:@"unit"];
         [shared synchronize];
     }
+    [self createShortcutItems];
+}
+
+- (void)createShortcutItems {
+    UIApplicationShortcutIcon *kmIcon = nil;
+    UIApplicationShortcutIcon *miIcon = nil;
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
+    if ([[shared stringForKey:@"unit"]  isEqual: @"mi"]) {
+        miIcon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeTaskCompleted];
+        kmIcon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeTask];
+    } else {
+        kmIcon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeTaskCompleted];
+        miIcon = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeTask];
+    }
+    UIApplicationShortcutItem *kmItem = [[UIApplicationShortcutItem alloc] initWithType:@"dog.wil.steps.set-unit-to-km" localizedTitle:@"Set unit to km" localizedSubtitle:nil icon:kmIcon userInfo:nil];
+    UIApplicationShortcutItem *miItem = [[UIApplicationShortcutItem alloc] initWithType:@"dog.wil.steps.set-unit-to-mi" localizedTitle:@"Set unit to mi" localizedSubtitle:nil icon:miIcon userInfo:nil];
+    NSArray *items = @[kmItem, miItem];
+    [UIApplication sharedApplication].shortcutItems = items;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self createShortcutItems];
     return YES;
 }
 
