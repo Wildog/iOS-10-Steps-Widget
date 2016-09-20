@@ -21,7 +21,6 @@
 		154D24491D8C80B300ACEC46 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24481D8C80B300ACEC46 /* TodayViewController.m */; };
 		154D244C1D8C80B300ACEC46 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154D244A1D8C80B300ACEC46 /* MainInterface.storyboard */; };
 		156341941D90FCE400D70769 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 154D24431D8C80B300ACEC46 /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		1577E3951D910619007C110C /* Steps iMsgExt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 158E14CF1D8E849D005B0BD4 /* Steps iMsgExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		158E14D01D8E849D005B0BD4 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 158E14AE1D8E7668005B0BD4 /* Messages.framework */; };
 		158E14D91D8E849D005B0BD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158E14D81D8E849D005B0BD4 /* Assets.xcassets */; };
 		158E14E41D8E84EA005B0BD4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158E14E11D8E84EA005B0BD4 /* MainInterface.storyboard */; };
@@ -32,6 +31,7 @@
 		158E14ED1D8E8536005B0BD4 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E91D8E8536005B0BD4 /* ChartNodeView.m */; };
 		158E14EE1D8E8536005B0BD4 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E91D8E8536005B0BD4 /* ChartNodeView.m */; };
 		158E14EF1D8E8536005B0BD4 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E91D8E8536005B0BD4 /* ChartNodeView.m */; };
+		15B86D7B1D915A8200BE0112 /* Steps iMsgExt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 158E14CF1D8E849D005B0BD4 /* Steps iMsgExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		15E59B581D8DAF44002D23D0 /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E59B571D8DAF44002D23D0 /* UIViewController+NavigationBar.m */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +43,7 @@
 			remoteGlobalIDString = 154D24421D8C80B300ACEC46;
 			remoteInfo = Widget;
 		};
-		1577E3961D910619007C110C /* PBXContainerItemProxy */ = {
+		15B86D7C1D915A8200BE0112 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 15A1E0A61D8B905C0068151B /* Project object */;
 			proxyType = 1;
@@ -60,7 +60,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				156341941D90FCE400D70769 /* Widget.appex in Embed App Extensions */,
-				1577E3951D910619007C110C /* Steps iMsgExt.appex in Embed App Extensions */,
+				15B86D7B1D915A8200BE0112 /* Steps iMsgExt.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,7 +264,7 @@
 			);
 			dependencies = (
 				156341961D90FCE400D70769 /* PBXTargetDependency */,
-				1577E3971D910619007C110C /* PBXTargetDependency */,
+				15B86D7D1D915A8200BE0112 /* PBXTargetDependency */,
 			);
 			name = "Steps Widget";
 			productName = LineChart;
@@ -416,10 +416,10 @@
 			target = 154D24421D8C80B300ACEC46 /* Widget */;
 			targetProxy = 156341951D90FCE400D70769 /* PBXContainerItemProxy */;
 		};
-		1577E3971D910619007C110C /* PBXTargetDependency */ = {
+		15B86D7D1D915A8200BE0112 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 158E14CE1D8E849D005B0BD4 /* Steps iMsgExt */;
-			targetProxy = 1577E3961D910619007C110C /* PBXContainerItemProxy */;
+			targetProxy = 15B86D7C1D915A8200BE0112 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

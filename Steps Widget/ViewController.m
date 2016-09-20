@@ -56,7 +56,7 @@
     [self readHealthKitData];
     [self.unitSwitch addTarget:self action:@selector(unitSwitched:) forControlEvents:UIControlEventValueChanged];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadAfterFirstTime) name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadAfterFirstTime) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 - (void)checkUnitState {
@@ -84,6 +84,7 @@
 }
 
 - (void)loadAfterFirstTime {
+    [self checkUnitState];
     [self.lineChartView setAnimated:NO];
     [self readHealthKitData];
 }
@@ -198,6 +199,7 @@
             _elementFlights = (NSArray*)arrayForFlights;
             _elementLables = (NSArray*)arrayForLabels;
             [self.lineChartView loadDataWithSelectedKept];
+            NSLog(@"_unit = %@", _unit);
             [self changeTextWithNodeAtIndex:_lastSelected];
             self.statLabel.text = [NSString stringWithFormat:@"Daily Average: %.0f steps, Total: %.0f steps", [self averageValue], [self totalValue]];
         } else if (!_errorOccurred && _maxValue <= 0) {

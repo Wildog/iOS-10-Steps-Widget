@@ -17,14 +17,12 @@
 
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
     NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
-    NSLog(@"%@", shortcutItem.type);
     if ([shortcutItem.type isEqual: @"dog.wil.steps.set-unit-to-km"]) {
         [shared setObject:@"km" forKey:@"unit"];
-        [shared synchronize];
     } else if ([shortcutItem.type isEqual: @"dog.wil.steps.set-unit-to-mi"]) {
         [shared setObject:@"mi" forKey:@"unit"];
-        [shared synchronize];
     }
+    [shared synchronize];
     [self createShortcutItems];
 }
 
@@ -71,7 +69,6 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [(ViewController*)self.window.rootViewController checkUnitState];
 }
 
 
