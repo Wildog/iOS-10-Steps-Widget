@@ -9,6 +9,7 @@
 #import <HealthKit/HealthKit.h>
 #import "ViewController.h"
 #import "LineChartView.h"
+#import "AppDelegate.h"
 #import "UIViewController_NavigationBar.h"
 
 @interface ViewController () <LineChartViewDataSource, LineChartViewDelegate> {
@@ -100,6 +101,7 @@
     [_shared setObject:_unit forKey:@"unit"];
     [_shared synchronize];
     [self readHealthKitData];
+    [(AppDelegate*)[[UIApplication sharedApplication] delegate] createShortcutItems];
 }
 
 - (void)didReceiveMemoryWarning {
