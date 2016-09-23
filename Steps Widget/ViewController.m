@@ -25,6 +25,7 @@
     NSString *_unit;
     NSUserDefaults *_shared;
     BOOL _errorOccurred;
+    BOOL _firstTimeLoaded;
 }
 
 @property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
@@ -42,6 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _errorOccurred = NO;
+    _firstTimeLoaded = YES;
     _numberCount = 7;
     _lastSelected = _numberCount - 1;
     _maxValue = _minValue = 0;
@@ -56,7 +58,7 @@
     [self readHealthKitData];
     [self.unitSwitch addTarget:self action:@selector(unitSwitched:) forControlEvents:UIControlEventValueChanged];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadAfterFirstTime) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
 - (void)checkUnitState {
@@ -83,9 +85,12 @@
     return YES;
 }
 
-- (void)loadAfterFirstTime {
+- (void)reload {
+    if (!_firstTimeLoaded) {
+        [self.lineChartView setAnimated:NO];
+    }
+    _firstTimeLoaded = NO;
     [self checkUnitState];
-    [self.lineChartView setAnimated:NO];
     [self readHealthKitData];
 }
 
@@ -199,7 +204,6 @@
             _elementFlights = (NSArray*)arrayForFlights;
             _elementLables = (NSArray*)arrayForLabels;
             [self.lineChartView loadDataWithSelectedKept];
-            NSLog(@"_unit = %@", _unit);
             [self changeTextWithNodeAtIndex:_lastSelected];
             self.statLabel.text = [NSString stringWithFormat:@"Daily Average: %.0f steps, Total: %.0f steps", [self averageValue], [self totalValue]];
         } else if (!_errorOccurred && _maxValue <= 0) {
