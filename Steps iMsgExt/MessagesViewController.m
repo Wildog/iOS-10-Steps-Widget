@@ -17,8 +17,7 @@
     NSArray *_elementFlights;
     NSUInteger _numberCount;
     NSUInteger _lastSelected;
-    CGFloat _maxValue;
-    CGFloat _minValue;
+    CGFloat _currentMax;
     NSDateFormatter *_formatter;
     NSString *_unit;
     NSUserDefaults *_shared;
@@ -126,7 +125,7 @@
     _errorOccurred = NO;
     _numberCount = 7;
     _lastSelected = _numberCount - 1;
-    _maxValue = _minValue = 0;
+    _currentMax = 0;
     _shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
     self.healthStore = [[HKHealthStore alloc] init];
     _formatter = [[NSDateFormatter alloc] init];
@@ -204,9 +203,7 @@
                                          HKQuantity *quantity = result.sumQuantity;
                                          double step = [quantity doubleValueForUnit:[HKUnit countUnit]];
                                          [arrayForValues setObject:[NSNumber numberWithDouble:step] atIndexedSubscript:_numberCount - 1 - i];
-                                         if (_minValue == _maxValue && _minValue == 0) _minValue = _maxValue = step;
-                                         if (step > _maxValue) _maxValue = step;
-                                         if (step < _minValue) _minValue = step;
+                                         if (step > _currentMax) _currentMax = step;
                                          dispatch_group_leave(hkGroup);
                                      }];
         HKStatisticsQuery *fquery = [[HKStatisticsQuery alloc]
@@ -241,14 +238,14 @@
         day = [day dateByAddingTimeInterval: -3600 * 24];
     }
     dispatch_group_notify(hkGroup, dispatch_get_main_queue(),^{
-        if (!_errorOccurred && _maxValue > 0) {
+        if (!_errorOccurred && _currentMax > 0) {
             _elementValues = (NSArray*)arrayForValues;
             _elementDistances = (NSArray*)arrayForDistances;
             _elementFlights = (NSArray*)arrayForFlights;
             _elementLables = (NSArray*)arrayForLabels;
             [self.lineChartView loadDataWithSelectedKept];
             [self changeTextWithNodeAtIndex:_lastSelected];
-        } else if (!_errorOccurred && _maxValue <= 0) {
+        } else if (!_errorOccurred && _currentMax <= 0) {
             self.label.text = @"No data";
         } else {
             self.label.text = @"Some error occured";
@@ -281,11 +278,11 @@
 }
 
 - (CGFloat)maxValue {
-    return _maxValue;
+    return [[_elementValues valueForKeyPath:@"@max.self"] doubleValue];
 }
 
 - (CGFloat)minValue {
-    return _minValue;
+    return [[_elementValues valueForKeyPath:@"@min.self"] doubleValue];
 }
 
 - (CGFloat)averageValue {

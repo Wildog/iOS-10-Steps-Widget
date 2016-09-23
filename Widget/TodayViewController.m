@@ -17,14 +17,14 @@
     NSArray *_elementDistances;
     NSArray *_elementFlights;
     NSUInteger _numberCount;
-    CGFloat _maxValue;
-    CGFloat _minValue;
+    CGFloat _currentMax;
     NSDateFormatter *_formatter;
     NSString *_unit;
     NSUserDefaults *_shared;
     BOOL _labelChanged;
     BOOL _errorOccurred;
     BOOL _firstLoaded;
+    BOOL _collapsed;
 }
 @property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
@@ -40,7 +40,7 @@
     self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
     self.healthStore = [[HKHealthStore alloc] init];
     _numberCount = 7;
-    _maxValue = _minValue = 0;
+    _currentMax = 0;
     _labelChanged = NO;
     _errorOccurred = NO;
     _firstLoaded = YES;
@@ -81,7 +81,11 @@
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     if (!_labelChanged) {
-        [self.lineChartView setNeedsDisplay];
+        if (_collapsed) {
+            [self.lineChartView removeSublayers];
+        } else {
+            [self.lineChartView setNeedsDisplay];
+        }
     }
     _labelChanged = NO;
 }
@@ -102,8 +106,8 @@
 
 - (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize {
     if (activeDisplayMode == NCWidgetDisplayModeExpanded) {
+        _collapsed = NO;
         [self.lineChartView setHidden:NO];
-        [self.lineChartView setNeedsDisplay];
         self.preferredContentSize = CGSizeMake(0.0, 280.0);
         if (_firstLoaded) {
             self.label.layer.transform = CATransform3DMakeTranslation(0, -20, 0);
@@ -112,6 +116,7 @@
             [self expandAnimation];
         }
     } else if (activeDisplayMode == NCWidgetDisplayModeCompact) {
+        _collapsed = YES;
         [self.lineChartView setHidden:YES];
         self.preferredContentSize = maxSize;
         if (!_firstLoaded) [self collapseAnimation];
@@ -214,9 +219,7 @@
                 HKQuantity *quantity = result.sumQuantity;
                 double step = [quantity doubleValueForUnit:[HKUnit countUnit]];
                 [arrayForValues setObject:[NSNumber numberWithDouble:step] atIndexedSubscript:_numberCount - 1 - i];
-                if (_minValue == _maxValue && _minValue == 0) _minValue = _maxValue = step;
-                if (step > _maxValue) _maxValue = step;
-                if (step < _minValue) _minValue = step;
+                if (step > _currentMax) _currentMax = step;
                 dispatch_group_leave(hkGroup);
         }];
         HKStatisticsQuery *fquery = [[HKStatisticsQuery alloc]
@@ -247,7 +250,7 @@
         day = [day dateByAddingTimeInterval: -3600 * 24];
     }
     dispatch_group_notify(hkGroup, dispatch_get_main_queue(),^{
-        if (!_errorOccurred && _maxValue > 0) {
+        if (!_errorOccurred && _currentMax > 0) {
             _elementValues = (NSArray*)arrayForValues;
             _elementDistances = (NSArray*)arrayForDistances;
             _elementFlights = (NSArray*)arrayForFlights;
@@ -262,7 +265,7 @@
             [_shared setObject:[NSString stringWithFormat:@"\uF3BB  %.0f   \uE801  %.2f %@   \uF148  %.0f F", [(NSNumber*)_elementValues[_numberCount-1] floatValue], [(NSNumber*)_elementDistances[_numberCount-1] floatValue], _unit, [(NSNumber*)_elementFlights[_numberCount-1] floatValue]] forKey:@"snapshot"];
             
             [_shared synchronize];
-        } else if (!_errorOccurred && _maxValue <= 0) {
+        } else if (!_errorOccurred && _currentMax <= 0) {
             self.errorLabel.text = @"No data";
         } else {
             self.errorLabel.text = @"Cannot access full Health data from lock screen";
@@ -295,11 +298,11 @@
 }
 
 - (CGFloat)maxValue {
-    return _maxValue;
+    return [[_elementValues valueForKeyPath:@"@max.self"] doubleValue];
 }
 
 - (CGFloat)minValue {
-    return _minValue;
+    return [[_elementValues valueForKeyPath:@"@min.self"] doubleValue];
 }
 
 - (CGFloat)valueForElementAtIndex:(NSUInteger)index {

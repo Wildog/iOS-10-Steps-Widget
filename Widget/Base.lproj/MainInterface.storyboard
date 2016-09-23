@@ -26,9 +26,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hzj-r8-0Li" customClass="LineChartView">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="170" id="r1l-50-THe"/>
-                                </constraints>
                             </view>
                             <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EyO-ei-GUy">
                                 <constraints>
@@ -61,12 +58,13 @@
                             <constraint firstItem="TAP-DW-fYm" firstAttribute="width" secondItem="EyO-ei-GUy" secondAttribute="width" id="6Ge-90-QP0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Hzj-r8-0Li" secondAttribute="trailing" constant="-20" id="7Ve-07-iGq"/>
                             <constraint firstItem="EyO-ei-GUy" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="JMO-Q7-7tI"/>
-                            <constraint firstItem="XBA-tB-EMM" firstAttribute="centerX" secondItem="Hzj-r8-0Li" secondAttribute="centerX" id="NB8-nr-MRr"/>
+                            <constraint firstItem="XBA-tB-EMM" firstAttribute="centerX" secondItem="EyO-ei-GUy" secondAttribute="centerX" id="NmF-wE-l7u"/>
                             <constraint firstItem="TAP-DW-fYm" firstAttribute="centerX" secondItem="EyO-ei-GUy" secondAttribute="centerX" id="OdV-3b-4NQ"/>
                             <constraint firstItem="EyO-ei-GUy" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="-20" id="UzF-3u-Rfj"/>
                             <constraint firstItem="TAP-DW-fYm" firstAttribute="top" secondItem="EyO-ei-GUy" secondAttribute="bottom" constant="-47" id="VD3-J0-Y9I"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EyO-ei-GUy" secondAttribute="trailing" constant="-20" id="VoZ-uq-olg"/>
-                            <constraint firstItem="XBA-tB-EMM" firstAttribute="centerY" secondItem="Hzj-r8-0Li" secondAttribute="centerY" constant="-10" id="oCa-Z5-A0h"/>
+                            <constraint firstItem="XBA-tB-EMM" firstAttribute="top" secondItem="EyO-ei-GUy" secondAttribute="bottom" constant="29" id="WyZ-4r-Ipg"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="Hzj-r8-0Li" secondAttribute="bottom" constant="18" id="peg-jC-GiO"/>
                             <constraint firstItem="Hzj-r8-0Li" firstAttribute="top" secondItem="EyO-ei-GUy" secondAttribute="bottom" constant="-13" id="uIt-fs-KQX"/>
                         </constraints>
                     </view>

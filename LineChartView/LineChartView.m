@@ -36,6 +36,7 @@
 - (void)setupDefaults {
     self.marginH = 30;
     self.marginV = 15;
+    self.labelHeight = 20;
     self.backgroundColor = [UIColor clearColor];
     self.backgroundLineWidth = 0.5;
     self.backgroundLineColor = [UIColor colorWithHue:0 saturation:0 brightness:0.8 alpha:0.3];
@@ -71,18 +72,21 @@
     [self setNeedsDisplay];
 }
 
-- (void)drawRect:(CGRect)rect {
+- (void)removeSublayers {
     [[self.layer sublayers] makeObjectsPerformSelector:@selector(removeFromSuperlayer)];
+}
+
+- (void)drawRect:(CGRect)rect {
+    [self removeSublayers];
     
     NSUInteger numberCount = [self.dataSource numberOfElements];
     CGFloat maxValue = [self.dataSource maxValue];
     CGFloat minValue = [self.dataSource minValue];
     CGFloat labelWidth = 30;
-    CGFloat labelHeight = 0;
-    if (self.showLabel) labelHeight = 20;
+    if (!self.showLabel) self.labelHeight = 0;
     
     if (self.marginV < 10) self.marginV = 10;
-    CGFloat chartHeight = self.frame.size.height - self.marginV * 2 - labelHeight;
+    CGFloat chartHeight = self.frame.size.height - self.marginV * 2 - self.labelHeight;
     CGFloat startX = self.marginH;
     CGFloat interval = (self.frame.size.width - self.marginH * 2) / (numberCount - 1);
     
@@ -103,8 +107,8 @@
         //draw labels
         if (self.showLabel && [self.delegate respondsToSelector:@selector(labelForElementAtIndex:)]) {
             NSString *labelText   = [self.dataSource labelForElementAtIndex:i];
-            UILabel *label        = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, labelWidth, labelHeight)];
-            label.center          = CGPointMake(xPos, self.marginV + chartHeight + 10 + 20);
+            UILabel *label        = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, labelWidth, self.labelHeight)];
+            label.center          = CGPointMake(xPos, self.marginV + chartHeight + 10 + self.labelHeight);
             label.text            = labelText;
             label.font            = [UIFont fontWithName:@"Avenir" size:11.0];
             label.textColor       = self.labelColor;

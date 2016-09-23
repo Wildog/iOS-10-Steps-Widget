@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSArray *gradientColors;
 @property (nonatomic, strong) UIColor *chartLineColor;
 @property (nonatomic, assign) CGFloat chartLineWidth;
+@property (nonatomic, assign) CGFloat labelHeight;
 @property (nonatomic, strong) UIColor *labelColor;
 @property (nonatomic, assign) CGFloat nodeSize;
 @property (nonatomic, assign) CGFloat animationDuration;
@@ -33,6 +34,7 @@
 
 - (void)loadData;
 - (void)loadDataWithSelectedKept;
+- (void)removeSublayers;
 
 @end
 
