@@ -42,7 +42,7 @@
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.lineChartView.frame.size.width + 5, self.lineChartView.frame.size.height + 5), NO, 0);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextTranslateCTM(context, -xPos, -yPos);
-    [self.view.layer renderInContext:context];
+    [self.view.layer.presentationLayer renderInContext:context];
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
