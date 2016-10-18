@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1500656E1DB634140005F535 /* WDLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E61D8E8536005B0BD4 /* WDLineChartView.m */; };
+		1500656F1DB634150005F535 /* WDLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E61D8E8536005B0BD4 /* WDLineChartView.m */; };
+		150065701DB634150005F535 /* WDLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E61D8E8536005B0BD4 /* WDLineChartView.m */; };
+		150065711DB6341C0005F535 /* WDChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E91D8E8536005B0BD4 /* WDChartNodeView.m */; };
+		150065721DB6341D0005F535 /* WDChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E91D8E8536005B0BD4 /* WDChartNodeView.m */; };
+		150065731DB6341E0005F535 /* WDChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E91D8E8536005B0BD4 /* WDChartNodeView.m */; };
 		153756091D8EE6F100E12657 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153756081D8EE6F100E12657 /* HealthKit.framework */; };
 		1537560B1D8EE76B00E12657 /* stepfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1537560A1D8EE76B00E12657 /* stepfont.ttf */; };
 		1537560C1D8EE76B00E12657 /* stepfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1537560A1D8EE76B00E12657 /* stepfont.ttf */; };
@@ -16,22 +22,16 @@
 		154D242A1D8C3D6300ACEC46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154D241C1D8C3D6300ACEC46 /* LaunchScreen.storyboard */; };
 		154D242B1D8C3D6300ACEC46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154D241E1D8C3D6300ACEC46 /* Main.storyboard */; };
 		154D242F1D8C3D6300ACEC46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24251D8C3D6300ACEC46 /* main.m */; };
-		154D24301D8C3D6300ACEC46 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24271D8C3D6300ACEC46 /* ViewController.m */; };
+		154D24301D8C3D6300ACEC46 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24271D8C3D6300ACEC46 /* MainViewController.m */; };
 		154D24451D8C80B300ACEC46 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154D24441D8C80B300ACEC46 /* NotificationCenter.framework */; };
-		154D24491D8C80B300ACEC46 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24481D8C80B300ACEC46 /* TodayViewController.m */; };
+		154D24491D8C80B300ACEC46 /* StepsTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154D24481D8C80B300ACEC46 /* StepsTodayViewController.m */; };
 		154D244C1D8C80B300ACEC46 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154D244A1D8C80B300ACEC46 /* MainInterface.storyboard */; };
-		1550C4651D915CF500A2ED1E /* Steps iMsgExt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 158E14CF1D8E849D005B0BD4 /* Steps iMsgExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		156341941D90FCE400D70769 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 154D24431D8C80B300ACEC46 /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1550C4651D915CF500A2ED1E /* Steps iMessage Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 158E14CF1D8E849D005B0BD4 /* Steps iMessage Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		156341941D90FCE400D70769 /* Steps Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 154D24431D8C80B300ACEC46 /* Steps Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		158E14D01D8E849D005B0BD4 /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 158E14AE1D8E7668005B0BD4 /* Messages.framework */; };
 		158E14D91D8E849D005B0BD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158E14D81D8E849D005B0BD4 /* Assets.xcassets */; };
 		158E14E41D8E84EA005B0BD4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158E14E11D8E84EA005B0BD4 /* MainInterface.storyboard */; };
-		158E14E51D8E84EA005B0BD4 /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E31D8E84EA005B0BD4 /* MessagesViewController.m */; };
-		158E14EA1D8E8536005B0BD4 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E61D8E8536005B0BD4 /* LineChartView.m */; };
-		158E14EB1D8E8536005B0BD4 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E61D8E8536005B0BD4 /* LineChartView.m */; };
-		158E14EC1D8E8536005B0BD4 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E61D8E8536005B0BD4 /* LineChartView.m */; };
-		158E14ED1D8E8536005B0BD4 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E91D8E8536005B0BD4 /* ChartNodeView.m */; };
-		158E14EE1D8E8536005B0BD4 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E91D8E8536005B0BD4 /* ChartNodeView.m */; };
-		158E14EF1D8E8536005B0BD4 /* ChartNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E91D8E8536005B0BD4 /* ChartNodeView.m */; };
+		158E14E51D8E84EA005B0BD4 /* StepsMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 158E14E31D8E84EA005B0BD4 /* StepsMessagesViewController.m */; };
 		15E59B581D8DAF44002D23D0 /* UIViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E59B571D8DAF44002D23D0 /* UIViewController+NavigationBar.m */; };
 /* End PBXBuildFile section */
 
@@ -59,8 +59,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				156341941D90FCE400D70769 /* Widget.appex in Embed App Extensions */,
-				1550C4651D915CF500A2ED1E /* Steps iMsgExt.appex in Embed App Extensions */,
+				156341941D90FCE400D70769 /* Steps Widget.appex in Embed App Extensions */,
+				1550C4651D915CF500A2ED1E /* Steps iMessage Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -70,7 +70,7 @@
 /* Begin PBXFileReference section */
 		153756081D8EE6F100E12657 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		1537560A1D8EE76B00E12657 /* stepfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = stepfont.ttf; sourceTree = "<group>"; };
-		154D24171D8C3D4F00ACEC46 /* Steps Widget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Steps Widget.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		154D24171D8C3D4F00ACEC46 /* Steps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Steps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		154D24191D8C3D6300ACEC46 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		154D241A1D8C3D6300ACEC46 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		154D241B1D8C3D6300ACEC46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,27 +78,27 @@
 		154D241F1D8C3D6300ACEC46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		154D24221D8C3D6300ACEC46 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		154D24251D8C3D6300ACEC46 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		154D24261D8C3D6300ACEC46 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		154D24271D8C3D6300ACEC46 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		154D24261D8C3D6300ACEC46 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		154D24271D8C3D6300ACEC46 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		154D24341D8C40BA00ACEC46 /* Steps Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Steps Widget.entitlements"; sourceTree = "<group>"; };
-		154D24431D8C80B300ACEC46 /* Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		154D24431D8C80B300ACEC46 /* Steps Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Steps Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		154D24441D8C80B300ACEC46 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		154D24471D8C80B300ACEC46 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
-		154D24481D8C80B300ACEC46 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		154D24471D8C80B300ACEC46 /* StepsTodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StepsTodayViewController.h; sourceTree = "<group>"; };
+		154D24481D8C80B300ACEC46 /* StepsTodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StepsTodayViewController.m; sourceTree = "<group>"; };
 		154D244B1D8C80B300ACEC46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		154D244D1D8C80B300ACEC46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1552D8C11D8C845300673910 /* Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widget.entitlements; sourceTree = "<group>"; };
 		158E14AE1D8E7668005B0BD4 /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
-		158E14CF1D8E849D005B0BD4 /* Steps iMsgExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Steps iMsgExt.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		158E14CF1D8E849D005B0BD4 /* Steps iMessage Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Steps iMessage Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		158E14D81D8E849D005B0BD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		158E14DA1D8E849D005B0BD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		158E14E11D8E84EA005B0BD4 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
-		158E14E21D8E84EA005B0BD4 /* MessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesViewController.h; sourceTree = "<group>"; };
-		158E14E31D8E84EA005B0BD4 /* MessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesViewController.m; sourceTree = "<group>"; };
-		158E14E61D8E8536005B0BD4 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LineChartView.m; path = LineChartView/LineChartView.m; sourceTree = "<group>"; };
-		158E14E71D8E8536005B0BD4 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LineChartView.h; path = LineChartView/LineChartView.h; sourceTree = "<group>"; };
-		158E14E81D8E8536005B0BD4 /* ChartNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChartNodeView.h; path = LineChartView/ChartNodeView.h; sourceTree = "<group>"; };
-		158E14E91D8E8536005B0BD4 /* ChartNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChartNodeView.m; path = LineChartView/ChartNodeView.m; sourceTree = "<group>"; };
+		158E14E21D8E84EA005B0BD4 /* StepsMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepsMessagesViewController.h; sourceTree = "<group>"; };
+		158E14E31D8E84EA005B0BD4 /* StepsMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepsMessagesViewController.m; sourceTree = "<group>"; };
+		158E14E61D8E8536005B0BD4 /* WDLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WDLineChartView.m; path = WDLineChartView/WDLineChartView.m; sourceTree = "<group>"; };
+		158E14E71D8E8536005B0BD4 /* WDLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WDLineChartView.h; path = WDLineChartView/WDLineChartView.h; sourceTree = "<group>"; };
+		158E14E81D8E8536005B0BD4 /* WDChartNodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WDChartNodeView.h; path = WDLineChartView/WDChartNodeView.h; sourceTree = "<group>"; };
+		158E14E91D8E8536005B0BD4 /* WDChartNodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WDChartNodeView.m; path = WDLineChartView/WDChartNodeView.m; sourceTree = "<group>"; };
 		158E14F01D8E857E005B0BD4 /* Steps iMsgExt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Steps iMsgExt.entitlements"; sourceTree = "<group>"; };
 		15E59B551D8DAF44002D23D0 /* UIViewController_NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewController_NavigationBar.h; sourceTree = "<group>"; };
 		15E59B561D8DAF44002D23D0 /* UIViewController+NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavigationBar.h"; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		154D24181D8C3D6300ACEC46 /* Steps Widget */ = {
+		154D24181D8C3D6300ACEC46 /* Main App */ = {
 			isa = PBXGroup;
 			children = (
 				15E59B551D8DAF44002D23D0 /* UIViewController_NavigationBar.h */,
@@ -147,10 +147,10 @@
 				154D241E1D8C3D6300ACEC46 /* Main.storyboard */,
 				154D24191D8C3D6300ACEC46 /* AppDelegate.h */,
 				154D241A1D8C3D6300ACEC46 /* AppDelegate.m */,
-				154D24261D8C3D6300ACEC46 /* ViewController.h */,
-				154D24271D8C3D6300ACEC46 /* ViewController.m */,
+				154D24261D8C3D6300ACEC46 /* MainViewController.h */,
+				154D24271D8C3D6300ACEC46 /* MainViewController.m */,
 			);
-			path = "Steps Widget";
+			path = "Main App";
 			sourceTree = "<group>";
 		};
 		154D24311D8C40BA00ACEC46 /* Frameworks */ = {
@@ -163,63 +163,63 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		154D24461D8C80B300ACEC46 /* Widget */ = {
+		154D24461D8C80B300ACEC46 /* Today Widget */ = {
 			isa = PBXGroup;
 			children = (
 				1552D8C11D8C845300673910 /* Widget.entitlements */,
-				154D24471D8C80B300ACEC46 /* TodayViewController.h */,
-				154D24481D8C80B300ACEC46 /* TodayViewController.m */,
+				154D24471D8C80B300ACEC46 /* StepsTodayViewController.h */,
+				154D24481D8C80B300ACEC46 /* StepsTodayViewController.m */,
 				154D244A1D8C80B300ACEC46 /* MainInterface.storyboard */,
 				154D244D1D8C80B300ACEC46 /* Info.plist */,
 			);
-			path = Widget;
+			path = "Today Widget";
 			sourceTree = "<group>";
 		};
-		158E14D11D8E849D005B0BD4 /* Steps iMsgExt */ = {
+		158E14D11D8E849D005B0BD4 /* iMessage Extension */ = {
 			isa = PBXGroup;
 			children = (
 				158E14F01D8E857E005B0BD4 /* Steps iMsgExt.entitlements */,
 				158E14E11D8E84EA005B0BD4 /* MainInterface.storyboard */,
-				158E14E21D8E84EA005B0BD4 /* MessagesViewController.h */,
-				158E14E31D8E84EA005B0BD4 /* MessagesViewController.m */,
+				158E14E21D8E84EA005B0BD4 /* StepsMessagesViewController.h */,
+				158E14E31D8E84EA005B0BD4 /* StepsMessagesViewController.m */,
 				158E14D81D8E849D005B0BD4 /* Assets.xcassets */,
 				158E14DA1D8E849D005B0BD4 /* Info.plist */,
 			);
-			path = "Steps iMsgExt";
+			path = "iMessage Extension";
 			sourceTree = "<group>";
 		};
 		15A1E0A51D8B905C0068151B = {
 			isa = PBXGroup;
 			children = (
 				1537560A1D8EE76B00E12657 /* stepfont.ttf */,
-				15E59B481D8DA222002D23D0 /* LineChartView */,
-				154D24181D8C3D6300ACEC46 /* Steps Widget */,
-				154D24461D8C80B300ACEC46 /* Widget */,
-				158E14D11D8E849D005B0BD4 /* Steps iMsgExt */,
+				15E59B481D8DA222002D23D0 /* WDLineChartView */,
+				154D24181D8C3D6300ACEC46 /* Main App */,
+				154D24461D8C80B300ACEC46 /* Today Widget */,
+				158E14D11D8E849D005B0BD4 /* iMessage Extension */,
 				154D24311D8C40BA00ACEC46 /* Frameworks */,
-				154D24171D8C3D4F00ACEC46 /* Steps Widget.app */,
-				154D24431D8C80B300ACEC46 /* Widget.appex */,
-				158E14CF1D8E849D005B0BD4 /* Steps iMsgExt.appex */,
+				154D24171D8C3D4F00ACEC46 /* Steps.app */,
+				154D24431D8C80B300ACEC46 /* Steps Widget.appex */,
+				158E14CF1D8E849D005B0BD4 /* Steps iMessage Extension.appex */,
 			);
 			sourceTree = "<group>";
 		};
-		15E59B481D8DA222002D23D0 /* LineChartView */ = {
+		15E59B481D8DA222002D23D0 /* WDLineChartView */ = {
 			isa = PBXGroup;
 			children = (
-				158E14E61D8E8536005B0BD4 /* LineChartView.m */,
-				158E14E71D8E8536005B0BD4 /* LineChartView.h */,
-				158E14E81D8E8536005B0BD4 /* ChartNodeView.h */,
-				158E14E91D8E8536005B0BD4 /* ChartNodeView.m */,
+				158E14E61D8E8536005B0BD4 /* WDLineChartView.m */,
+				158E14E71D8E8536005B0BD4 /* WDLineChartView.h */,
+				158E14E81D8E8536005B0BD4 /* WDChartNodeView.h */,
+				158E14E91D8E8536005B0BD4 /* WDChartNodeView.m */,
 			);
-			name = LineChartView;
-			sourceTree = "<group>";
+			name = WDLineChartView;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		154D24421D8C80B300ACEC46 /* Widget */ = {
+		154D24421D8C80B300ACEC46 /* Steps Widget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 154D24511D8C80B300ACEC46 /* Build configuration list for PBXNativeTarget "Widget" */;
+			buildConfigurationList = 154D24511D8C80B300ACEC46 /* Build configuration list for PBXNativeTarget "Steps Widget" */;
 			buildPhases = (
 				154D243F1D8C80B300ACEC46 /* Sources */,
 				154D24401D8C80B300ACEC46 /* Frameworks */,
@@ -229,14 +229,14 @@
 			);
 			dependencies = (
 			);
-			name = Widget;
+			name = "Steps Widget";
 			productName = Widget;
-			productReference = 154D24431D8C80B300ACEC46 /* Widget.appex */;
+			productReference = 154D24431D8C80B300ACEC46 /* Steps Widget.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		158E14CE1D8E849D005B0BD4 /* Steps iMsgExt */ = {
+		158E14CE1D8E849D005B0BD4 /* Steps iMessage Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 158E14DE1D8E849D005B0BD4 /* Build configuration list for PBXNativeTarget "Steps iMsgExt" */;
+			buildConfigurationList = 158E14DE1D8E849D005B0BD4 /* Build configuration list for PBXNativeTarget "Steps iMessage Extension" */;
 			buildPhases = (
 				158E14CB1D8E849D005B0BD4 /* Sources */,
 				158E14CC1D8E849D005B0BD4 /* Frameworks */,
@@ -246,14 +246,14 @@
 			);
 			dependencies = (
 			);
-			name = "Steps iMsgExt";
+			name = "Steps iMessage Extension";
 			productName = "Steps iMsgExt";
-			productReference = 158E14CF1D8E849D005B0BD4 /* Steps iMsgExt.appex */;
+			productReference = 158E14CF1D8E849D005B0BD4 /* Steps iMessage Extension.appex */;
 			productType = "com.apple.product-type.app-extension.messages";
 		};
-		15A1E0AD1D8B905C0068151B /* Steps Widget */ = {
+		15A1E0AD1D8B905C0068151B /* Steps */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 15A1E0C51D8B905C0068151B /* Build configuration list for PBXNativeTarget "Steps Widget" */;
+			buildConfigurationList = 15A1E0C51D8B905C0068151B /* Build configuration list for PBXNativeTarget "Steps" */;
 			buildPhases = (
 				15A1E0AA1D8B905C0068151B /* Sources */,
 				15A1E0AB1D8B905C0068151B /* Frameworks */,
@@ -266,9 +266,9 @@
 				156341961D90FCE400D70769 /* PBXTargetDependency */,
 				1550C4671D915CF500A2ED1E /* PBXTargetDependency */,
 			);
-			name = "Steps Widget";
+			name = Steps;
 			productName = LineChart;
-			productReference = 154D24171D8C3D4F00ACEC46 /* Steps Widget.app */;
+			productReference = 154D24171D8C3D4F00ACEC46 /* Steps.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -334,9 +334,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				15A1E0AD1D8B905C0068151B /* Steps Widget */,
-				154D24421D8C80B300ACEC46 /* Widget */,
-				158E14CE1D8E849D005B0BD4 /* Steps iMsgExt */,
+				15A1E0AD1D8B905C0068151B /* Steps */,
+				154D24421D8C80B300ACEC46 /* Steps Widget */,
+				158E14CE1D8E849D005B0BD4 /* Steps iMessage Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -379,9 +379,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				154D24491D8C80B300ACEC46 /* TodayViewController.m in Sources */,
-				158E14EE1D8E8536005B0BD4 /* ChartNodeView.m in Sources */,
-				158E14EB1D8E8536005B0BD4 /* LineChartView.m in Sources */,
+				154D24491D8C80B300ACEC46 /* StepsTodayViewController.m in Sources */,
+				1500656F1DB634150005F535 /* WDLineChartView.m in Sources */,
+				150065721DB6341D0005F535 /* WDChartNodeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,9 +389,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				158E14E51D8E84EA005B0BD4 /* MessagesViewController.m in Sources */,
-				158E14EF1D8E8536005B0BD4 /* ChartNodeView.m in Sources */,
-				158E14EC1D8E8536005B0BD4 /* LineChartView.m in Sources */,
+				158E14E51D8E84EA005B0BD4 /* StepsMessagesViewController.m in Sources */,
+				1500656E1DB634140005F535 /* WDLineChartView.m in Sources */,
+				150065711DB6341C0005F535 /* WDChartNodeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,11 +400,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				154D24281D8C3D6300ACEC46 /* AppDelegate.m in Sources */,
-				158E14ED1D8E8536005B0BD4 /* ChartNodeView.m in Sources */,
-				158E14EA1D8E8536005B0BD4 /* LineChartView.m in Sources */,
+				150065701DB634150005F535 /* WDLineChartView.m in Sources */,
+				150065731DB6341E0005F535 /* WDChartNodeView.m in Sources */,
 				15E59B581D8DAF44002D23D0 /* UIViewController+NavigationBar.m in Sources */,
 				154D242F1D8C3D6300ACEC46 /* main.m in Sources */,
-				154D24301D8C3D6300ACEC46 /* ViewController.m in Sources */,
+				154D24301D8C3D6300ACEC46 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,12 +413,12 @@
 /* Begin PBXTargetDependency section */
 		1550C4671D915CF500A2ED1E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 158E14CE1D8E849D005B0BD4 /* Steps iMsgExt */;
+			target = 158E14CE1D8E849D005B0BD4 /* Steps iMessage Extension */;
 			targetProxy = 1550C4661D915CF500A2ED1E /* PBXContainerItemProxy */;
 		};
 		156341961D90FCE400D70769 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 154D24421D8C80B300ACEC46 /* Widget */;
+			target = 154D24421D8C80B300ACEC46 /* Steps Widget */;
 			targetProxy = 156341951D90FCE400D70769 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -454,9 +454,10 @@
 		154D24521D8C80B300ACEC46 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Widget/Widget.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Today Widget/Widget.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 842AN99JJH;
-				INFOPLIST_FILE = Widget/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Today Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dog.wil.steps.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -467,9 +468,10 @@
 		154D24531D8C80B300ACEC46 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = Widget/Widget.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Today Widget/Widget.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 842AN99JJH;
-				INFOPLIST_FILE = Widget/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Today Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dog.wil.steps.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -481,9 +483,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				CODE_SIGN_ENTITLEMENTS = "Steps iMsgExt/Steps iMsgExt.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iMessage Extension/Steps iMsgExt.entitlements";
 				DEVELOPMENT_TEAM = 842AN99JJH;
-				INFOPLIST_FILE = "Steps iMsgExt/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/iMessage Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dog.wil.steps.imsg-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -495,9 +497,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
-				CODE_SIGN_ENTITLEMENTS = "Steps iMsgExt/Steps iMsgExt.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iMessage Extension/Steps iMsgExt.entitlements";
 				DEVELOPMENT_TEAM = 842AN99JJH;
-				INFOPLIST_FILE = "Steps iMsgExt/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/iMessage Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dog.wil.steps.imsg-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -599,9 +601,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Steps Widget/Steps Widget.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Main App/Steps Widget.entitlements";
 				DEVELOPMENT_TEAM = 842AN99JJH;
-				INFOPLIST_FILE = "$(SRCROOT)/Steps Widget/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Main App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dog.wil.steps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -612,9 +614,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Steps Widget/Steps Widget.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Main App/Steps Widget.entitlements";
 				DEVELOPMENT_TEAM = 842AN99JJH;
-				INFOPLIST_FILE = "$(SRCROOT)/Steps Widget/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Main App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dog.wil.steps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -624,7 +626,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		154D24511D8C80B300ACEC46 /* Build configuration list for PBXNativeTarget "Widget" */ = {
+		154D24511D8C80B300ACEC46 /* Build configuration list for PBXNativeTarget "Steps Widget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				154D24521D8C80B300ACEC46 /* Debug */,
@@ -633,7 +635,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		158E14DE1D8E849D005B0BD4 /* Build configuration list for PBXNativeTarget "Steps iMsgExt" */ = {
+		158E14DE1D8E849D005B0BD4 /* Build configuration list for PBXNativeTarget "Steps iMessage Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				158E14DF1D8E849D005B0BD4 /* Debug */,
@@ -651,7 +653,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		15A1E0C51D8B905C0068151B /* Build configuration list for PBXNativeTarget "Steps Widget" */ = {
+		15A1E0C51D8B905C0068151B /* Build configuration list for PBXNativeTarget "Steps" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				15A1E0C61D8B905C0068151B /* Debug */,

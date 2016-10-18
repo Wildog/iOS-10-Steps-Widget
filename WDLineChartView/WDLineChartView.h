@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol LineChartViewDataSource, LineChartViewDelegate;
+@protocol WDLineChartViewDataSource, WDLineChartViewDelegate;
 
-@interface LineChartView : UIView
+@interface WDLineChartView : UIView
 
 @property (nonatomic, assign) CGFloat marginH;
 @property (nonatomic, assign) CGFloat marginV;
@@ -29,8 +29,8 @@
 @property (nonatomic, assign) BOOL showLabel;
 @property (nonatomic, assign) BOOL showAverageLine;
 
-@property (nonatomic, weak) id<LineChartViewDataSource> dataSource;
-@property (nonatomic, weak) id<LineChartViewDelegate> delegate;
+@property (nonatomic, weak) id<WDLineChartViewDataSource> dataSource;
+@property (nonatomic, weak) id<WDLineChartViewDelegate> delegate;
 
 - (void)loadData;
 - (void)loadDataWithSelectedKept;
@@ -38,7 +38,7 @@
 
 @end
 
-@protocol LineChartViewDataSource <NSObject>
+@protocol WDLineChartViewDataSource <NSObject>
 @required
 - (NSUInteger)numberOfElements;
 - (CGFloat)maxValue;
@@ -49,7 +49,7 @@
 - (CGFloat)averageValue;
 @end
 
-@protocol LineChartViewDelegate <NSObject>
+@protocol WDLineChartViewDelegate <NSObject>
 @optional
 - (void)clickedNodeAtIndex:(NSUInteger)index;
 @end

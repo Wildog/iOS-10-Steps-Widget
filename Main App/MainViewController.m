@@ -7,12 +7,12 @@
 //
 
 #import <HealthKit/HealthKit.h>
-#import "ViewController.h"
-#import "LineChartView.h"
+#import "MainViewController.h"
+#import "WDLineChartView.h"
 #import "AppDelegate.h"
 #import "UIViewController_NavigationBar.h"
 
-@interface ViewController () <LineChartViewDataSource, LineChartViewDelegate> {
+@interface MainViewController () <WDLineChartViewDataSource, WDLineChartViewDelegate> {
     NSArray *_elementValues;
     NSArray *_elementLables;
     NSArray *_elementDistances;
@@ -27,7 +27,7 @@
     BOOL _currentMax;
 }
 
-@property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
+@property (weak, nonatomic) IBOutlet WDLineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UISwitch *unitSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *kmLabel;
@@ -37,26 +37,30 @@
 
 @end
 
-@implementation ViewController
+@implementation MainViewController
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        _errorOccurred = NO;
+        _firstTimeLoaded = YES;
+        _numberCount = 7;
+        _lastSelected = _numberCount - 1;
+        _currentMax = 0;
+        _shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
+        _formatter = [[NSDateFormatter alloc] init];
+        [_formatter setDateFormat:@"M/d"];
+        self.healthStore = [[HKHealthStore alloc] init];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _errorOccurred = NO;
-    _firstTimeLoaded = YES;
-    _numberCount = 7;
-    _lastSelected = _numberCount - 1;
-    _currentMax = 0;
-    _shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
-    self.healthStore = [[HKHealthStore alloc] init];
     self.navigationItem.title = @"Steps";
-    _formatter = [[NSDateFormatter alloc] init];
-    [_formatter setDateFormat:@"M/d"];
-    
+    [self.unitSwitch addTarget:self action:@selector(unitSwitched:) forControlEvents:UIControlEventValueChanged];
     [self.lineChartView setDataSource:self];
     [self.lineChartView setDelegate:self];
-    [self readHealthKitData];
-    [self.unitSwitch addTarget:self action:@selector(unitSwitched:) forControlEvents:UIControlEventValueChanged];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 

@@ -6,11 +6,11 @@
 //  Copyright © 2016 Wildog. All rights reserved.
 //
 
-#import "MessagesViewController.h"
+#import "StepsMessagesViewController.h"
 #import <HealthKit/HealthKit.h>
-#import "LineChartView.h"
+#import "WDLineChartView.h"
 
-@interface MessagesViewController () <LineChartViewDataSource, LineChartViewDelegate> {
+@interface StepsMessagesViewController () <WDLineChartViewDataSource, WDLineChartViewDelegate> {
     NSArray *_elementValues;
     NSArray *_elementLables;
     NSArray *_elementDistances;
@@ -24,14 +24,14 @@
     BOOL _errorOccurred;
 }
 
-@property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
+@property (weak, nonatomic) IBOutlet WDLineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (nonatomic, strong) HKHealthStore *healthStore;
 
 @end
 
-@implementation MessagesViewController
+@implementation StepsMessagesViewController
 
 #pragma mark - Conversation Handling
 
@@ -70,6 +70,9 @@
             self.label.text = @"failed to create msg";
         }
     }];
+    
+    //dismiss extension
+    [self dismiss];
 }
 
 -(void)didBecomeActiveWithConversation:(MSConversation *)conversation {
@@ -120,24 +123,30 @@
 
 #pragma mark vc methods
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        _errorOccurred = NO;
+        _numberCount = 7;
+        _lastSelected = _numberCount - 1;
+        _currentMax = 0;
+        _formatter = [[NSDateFormatter alloc] init];
+        [_formatter setDateFormat:@"M/d"];
+        self.healthStore = [[HKHealthStore alloc] init];
+        _shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
+        
+        NSString *unit = [_shared stringForKey:@"unit"];
+        if (unit != nil) {
+            _unit = unit;
+        } else {
+            _unit = @"km";
+        }
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _errorOccurred = NO;
-    _numberCount = 7;
-    _lastSelected = _numberCount - 1;
-    _currentMax = 0;
-    _shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
-    self.healthStore = [[HKHealthStore alloc] init];
-    _formatter = [[NSDateFormatter alloc] init];
-    [_formatter setDateFormat:@"M/d"];
-    
-    NSString *unit = [_shared stringForKey:@"unit"];
-    if (unit != nil) {
-        _unit = unit;
-    } else {
-        _unit = @"km";
-    }
-    
     [self.lineChartView setDataSource:self];
     [self.lineChartView setDelegate:self];
     [self.lineChartView setShowAverageLine:NO];

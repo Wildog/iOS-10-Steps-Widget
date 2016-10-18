@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "15A1E0AD1D8B905C0068151B"
-            BuildableName = "Steps Widget.app"
-            BlueprintName = "Steps Widget"
+            BuildableName = "Steps.app"
+            BlueprintName = "Steps"
             ReferencedContainer = "container:Steps Widget.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "15A1E0AD1D8B905C0068151B"
-            BuildableName = "Steps Widget.app"
-            BlueprintName = "Steps Widget"
+            BuildableName = "Steps.app"
+            BlueprintName = "Steps"
             ReferencedContainer = "container:Steps Widget.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

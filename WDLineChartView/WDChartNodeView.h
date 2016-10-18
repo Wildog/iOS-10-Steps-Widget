@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChartNodeView : UIView
+@interface WDChartNodeView : UIView
 
 @property (nonatomic, assign) NSUInteger index;
 @property (nonatomic, assign) BOOL isActive;

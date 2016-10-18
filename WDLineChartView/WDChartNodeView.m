@@ -6,15 +6,15 @@
 //  Copyright © 2016 Wildog. All rights reserved.
 //
 
-#import "ChartNodeView.h"
+#import "WDChartNodeView.h"
 
-@interface ChartNodeView()
+@interface WDChartNodeView()
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic, strong) UIColor *activeColor;
 @property (nonatomic, strong) UIColor *shadowColor;
 @end
 
-@implementation ChartNodeView
+@implementation WDChartNodeView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

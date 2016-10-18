@@ -6,16 +6,16 @@
 //  Copyright © 2016 Wildog. All rights reserved.
 //
 
-#import "LineChartView.h"
-#import "ChartNodeView.h"
+#import "WDLineChartView.h"
+#import "WDChartNodeView.h"
 
-@interface LineChartView() {
+@interface WDLineChartView() {
     NSUInteger _lastSelected;
     BOOL _dataLoaded;
 }
 @end
 
-@implementation LineChartView
+@implementation WDLineChartView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -56,7 +56,7 @@
     _dataLoaded = NO;
 }
 
-- (void)setDelegate:(id<LineChartViewDelegate>)delegate {
+- (void)setDelegate:(id<WDLineChartViewDelegate>)delegate {
     _delegate = delegate;
     _lastSelected = [self.dataSource numberOfElements] - 1;
 }
@@ -121,7 +121,7 @@
         if (_dataLoaded) {
             //make nodes
             CGPoint nodeCenter = CGPointMake(xPos, self.marginV + chartHeight * (1 - ([self.dataSource valueForElementAtIndex:i] - minValue) / (maxValue - minValue)));
-            ChartNodeView *node = [[ChartNodeView alloc] initWithFrame:CGRectMake(0, 0, self.nodeSize * 2, self.nodeSize * 2)];
+            WDChartNodeView *node = [[WDChartNodeView alloc] initWithFrame:CGRectMake(0, 0, self.nodeSize * 2, self.nodeSize * 2)];
             node.center = nodeCenter;
             node.index = i;
             if (self.animated) {
@@ -214,7 +214,7 @@
         //popup animation for nodes
         CGFloat delay = 0;
         CGFloat delta = self.animationDuration / (numberCount + 1);
-        for (ChartNodeView* node in nodesArray) {
+        for (WDChartNodeView* node in nodesArray) {
             [self addSubview:node];
             if (self.animated) {
                 [UIView animateWithDuration:0.5 delay:delay usingSpringWithDamping:0.7 initialSpringVelocity:0 options:0 animations:^{
@@ -239,14 +239,14 @@
     CGPoint touchPoint = [touch locationInView:self];
     UIView *touchView = [self hitTest:touchPoint withEvent:nil];
     
-    if ([touchView isKindOfClass:[ChartNodeView class]]) {
+    if ([touchView isKindOfClass:[WDChartNodeView class]]) {
         for (UIView *subview in self.subviews) {
-            if ([subview isKindOfClass:[ChartNodeView class]]) {
-                ChartNodeView *nodeView = (ChartNodeView*)subview;
+            if ([subview isKindOfClass:[WDChartNodeView class]]) {
+                WDChartNodeView *nodeView = (WDChartNodeView*)subview;
                 if (nodeView.isActive) [nodeView toggleState];
             }
         }
-        ChartNodeView *touchNode = (ChartNodeView*)touchView;
+        WDChartNodeView *touchNode = (WDChartNodeView*)touchView;
         [touchNode toggleState];
         _lastSelected = touchNode.index;
         if ([self.delegate respondsToSelector:@selector(clickedNodeAtIndex:)]) {

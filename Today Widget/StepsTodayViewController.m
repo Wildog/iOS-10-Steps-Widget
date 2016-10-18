@@ -6,12 +6,12 @@
 //  Copyright © 2016 Wildog. All rights reserved.
 //
 
-#import "TodayViewController.h"
-#import "LineChartView.h"
+#import "StepsTodayViewController.h"
+#import "WDLineChartView.h"
 #import <HealthKit/HealthKit.h>
 #import <NotificationCenter/NotificationCenter.h>
 
-@interface TodayViewController () <NCWidgetProviding, LineChartViewDataSource, LineChartViewDelegate, CAAnimationDelegate> {
+@interface StepsTodayViewController () <NCWidgetProviding, WDLineChartViewDataSource, WDLineChartViewDelegate, CAAnimationDelegate> {
     NSArray *_elementValues;
     NSArray *_elementLables;
     NSArray *_elementDistances;
@@ -26,36 +26,43 @@
     BOOL _firstLoaded;
     BOOL _collapsed;
 }
-@property (weak, nonatomic) IBOutlet LineChartView *lineChartView;
+@property (weak, nonatomic) IBOutlet WDLineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statLabel;
 @property (nonatomic, strong) HKHealthStore *healthStore;
 @end
 
-@implementation TodayViewController
+@implementation StepsTodayViewController
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        _numberCount = 7;
+        _currentMax = 0;
+        _labelChanged = NO;
+        _errorOccurred = NO;
+        _firstLoaded = YES;
+        _formatter = [[NSDateFormatter alloc] init];
+        [_formatter setDateFormat:@"M/d"];
+        self.healthStore = [[HKHealthStore alloc] init];
+        _shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
+        
+        NSString *unit = [_shared stringForKey:@"unit"];
+        if (unit != nil) {
+            _unit = unit;
+        } else {
+            _unit = @"km";
+            [_shared setObject:_unit forKey:@"unit"];
+            [_shared synchronize];
+        }
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
-    self.healthStore = [[HKHealthStore alloc] init];
-    _numberCount = 7;
-    _currentMax = 0;
-    _labelChanged = NO;
-    _errorOccurred = NO;
-    _firstLoaded = YES;
-    _formatter = [[NSDateFormatter alloc] init];
-    [_formatter setDateFormat:@"M/d"];
-    _shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
-    
-    NSString *unit = [_shared stringForKey:@"unit"];
-    if (unit != nil) {
-        _unit = unit;
-    } else {
-        _unit = @"km";
-        [_shared setObject:_unit forKey:@"unit"];
-        [_shared synchronize];
-    }
     
     NSString *snapshot = [_shared stringForKey:@"snapshot"];
     if (snapshot != nil) {
