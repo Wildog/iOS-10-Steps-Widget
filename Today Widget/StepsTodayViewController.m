@@ -45,7 +45,7 @@
         _firstLoaded = YES;
         _formatter = [[NSDateFormatter alloc] init];
         [_formatter setDateFormat:@"M/d"];
-        self.healthStore = [[HKHealthStore alloc] init];
+        _healthStore = [[HKHealthStore alloc] init];
         _shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
         
         NSString *unit = [_shared stringForKey:@"unit"];
@@ -66,22 +66,22 @@
     
     NSString *snapshot = [_shared stringForKey:@"snapshot"];
     if (snapshot != nil) {
-        self.label.text = snapshot;
+        _label.text = snapshot;
     } else {
-        self.label.text = [NSString stringWithFormat:@"\uF3BB  ----   \uE801  ---- %@   \uF148  -- F", _unit];
+        _label.text = [NSString stringWithFormat:@"\uF3BB  ----   \uE801  ---- %@   \uF148  -- F", _unit];
     }
     NSString *stat = [_shared stringForKey:@"stat"];
     if (stat != nil) {
-        self.statLabel.text = stat;
+        _statLabel.text = stat;
     } else {
-        self.statLabel.text = @"Daily Average: ---- steps, Total: ----- steps";
+        _statLabel.text = @"Daily Average: ---- steps, Total: ----- steps";
     }
     
-    [self.statLabel.layer setOpacity:0];
-    [self.lineChartView setBackgroundLineColor:[UIColor colorWithHue:0 saturation:0 brightness:0.75 alpha:0.75]];
-    [self.lineChartView setAverageLineColor:[UIColor colorWithHue:0 saturation:0 brightness:0.75 alpha:0.75]];
-    [self.lineChartView setDataSource:self];
-    [self.lineChartView setDelegate:self];
+    [_statLabel.layer setOpacity:0];
+    [_lineChartView setBackgroundLineColor:[UIColor colorWithHue:0 saturation:0 brightness:0.75 alpha:0.75]];
+    [_lineChartView setAverageLineColor:[UIColor colorWithHue:0 saturation:0 brightness:0.75 alpha:0.75]];
+    [_lineChartView setDataSource:self];
+    [_lineChartView setDelegate:self];
     [self readHealthKitData];
 }
 
@@ -89,9 +89,9 @@
     [super viewDidLayoutSubviews];
     if (!_labelChanged) {
         if (_collapsed) {
-            [self.lineChartView removeSublayers];
+            [_lineChartView removeSublayers];
         } else {
-            [self.lineChartView setNeedsDisplay];
+            [_lineChartView setNeedsDisplay];
         }
     }
     _labelChanged = NO;
@@ -114,17 +114,17 @@
 - (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize {
     if (activeDisplayMode == NCWidgetDisplayModeExpanded) {
         _collapsed = NO;
-        [self.lineChartView setHidden:NO];
+        [_lineChartView setHidden:NO];
         self.preferredContentSize = CGSizeMake(0.0, 280.0);
         if (_firstLoaded) {
-            self.label.layer.transform = CATransform3DMakeTranslation(0, -20, 0);
-            [self.statLabel.layer setOpacity:1];
+            _label.layer.transform = CATransform3DMakeTranslation(0, -20, 0);
+            [_statLabel.layer setOpacity:1];
         } else {
             [self expandAnimation];
         }
     } else if (activeDisplayMode == NCWidgetDisplayModeCompact) {
         _collapsed = YES;
-        [self.lineChartView setHidden:YES];
+        [_lineChartView setHidden:YES];
         self.preferredContentSize = maxSize;
         if (!_firstLoaded) [self collapseAnimation];
     }
@@ -143,7 +143,7 @@
     moveUpAnimation.fillMode = kCAFillModeForwards;
     moveUpAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints: 0.299 : 0.000 : 0.292 : 0.910];
     [moveUpAnimation setDuration: 0.5];
-    [self.label.layer addAnimation:moveUpAnimation forKey:@"moveUpText"];
+    [_label.layer addAnimation:moveUpAnimation forKey:@"moveUpText"];
     
     //stat label fade in
     CAKeyframeAnimation *fadeInAnimation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
@@ -152,7 +152,7 @@
     fadeInAnimation.fillMode = kCAFillModeForwards;
     fadeInAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints: 0.354 : 0.000 : 0.223 : 0.841];
     [fadeInAnimation setDuration: 1];
-    [self.statLabel.layer addAnimation:fadeInAnimation forKey:@"fadeInText"];
+    [_statLabel.layer addAnimation:fadeInAnimation forKey:@"fadeInText"];
 }
 
 - (void)collapseAnimation {
@@ -167,7 +167,7 @@
     moveDownAnimation.fillMode = kCAFillModeForwards;
     moveDownAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints: 0.299 : 0.000 : 0.292 : 0.910];
     [moveDownAnimation setDuration: 0.5];
-    [[self.label layer] addAnimation:moveDownAnimation forKey:@"moveDownText"];
+    [[_label layer] addAnimation:moveDownAnimation forKey:@"moveDownText"];
     
     //stat label fade out
     CAKeyframeAnimation *fadeOutAnimation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
@@ -176,7 +176,7 @@
     fadeOutAnimation.fillMode = kCAFillModeForwards;
     fadeOutAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints: 0.000 : 0.076 : 0.104 : 1.000];
     [fadeOutAnimation setDuration: 0.4];
-    [self.statLabel.layer addAnimation:fadeOutAnimation forKey:@"fadeOutText"];
+    [_statLabel.layer addAnimation:fadeOutAnimation forKey:@"fadeOutText"];
 }
 
 #pragma mark - HealthKit methods
@@ -204,7 +204,7 @@
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
     
     for (NSUInteger i = 0; i < _numberCount; i++) {
-        [arrayForLabels setObject:[_formatter stringFromDate:day] atIndexedSubscript:_numberCount - 1 - i];
+        arrayForLabels[_numberCount - 1 - i] = [_formatter stringFromDate:day];
         
         NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:day];
         components.hour = components.minute = components.second = 0;
@@ -248,11 +248,11 @@
                 dispatch_group_leave(hkGroup);
         }];
         dispatch_group_enter(hkGroup);
-        [self.healthStore executeQuery:squery];
+        [_healthStore executeQuery:squery];
         dispatch_group_enter(hkGroup);
-        [self.healthStore executeQuery:fquery];
+        [_healthStore executeQuery:fquery];
         dispatch_group_enter(hkGroup);
-        [self.healthStore executeQuery:dquery];
+        [_healthStore executeQuery:dquery];
         
         day = [day dateByAddingTimeInterval: -3600 * 24];
     }
@@ -262,10 +262,10 @@
             _elementDistances = (NSArray*)arrayForDistances;
             _elementFlights = (NSArray*)arrayForFlights;
             _elementLables = (NSArray*)arrayForLabels;
-            [self.lineChartView loadData];
+            [_lineChartView loadData];
             
             NSString *stat = [NSString stringWithFormat:@"Daily Average: %.0f steps, Total: %.0f steps", [self averageValue], [self totalValue]];
-            self.statLabel.text = stat;
+            _statLabel.text = stat;
             [_shared setObject:stat forKey:@"stat"];
             
             [self changeTextWithNodeAtIndex:_numberCount - 1];
@@ -273,9 +273,9 @@
             
             [_shared synchronize];
         } else if (!_errorOccurred && _currentMax <= 0) {
-            self.errorLabel.text = @"No data";
+            _errorLabel.text = @"No data";
         } else {
-            self.errorLabel.text = @"Cannot access full Health data from lock screen";
+            _errorLabel.text = @"Cannot access full Health data from lock screen";
         }
     });
 }
@@ -286,15 +286,15 @@
         HKQuantityType *stepType =[HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
         HKQuantityType *distanceType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceWalkingRunning];
         HKQuantityType *flightsType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierFlightsClimbed];
-        [self.healthStore requestAuthorizationToShareTypes:nil readTypes:[NSSet setWithObjects:stepType, distanceType, flightsType, nil] completion:^(BOOL success, NSError *error) {
+        [_healthStore requestAuthorizationToShareTypes:nil readTypes:[NSSet setWithObjects:stepType, distanceType, flightsType, nil] completion:^(BOOL success, NSError *error) {
             if (success) {
                 [self queryHealthData];
             } else {
-                self.label.text = @"Health Data Permission Denied";
+                _label.text = @"Health Data Permission Denied";
             }
         }];
     } else {
-        self.label.text = @"Health Data Not Available";
+        _label.text = @"Health Data Not Available";
     }
 }
 
@@ -337,7 +337,7 @@
 
 - (void)changeTextWithNodeAtIndex:(NSUInteger)index {
     NSString *result = [NSString stringWithFormat:@"\uF3BB  %.0f   \uE801  %.2f %@   \uF148  %.0f F", [(NSNumber*)_elementValues[index] floatValue], [(NSNumber*)_elementDistances[index] floatValue], _unit, [(NSNumber*)_elementFlights[index] floatValue]];
-    self.label.text = result;
+    _label.text = result;
 }
 
 @end

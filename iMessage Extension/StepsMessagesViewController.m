@@ -37,9 +37,9 @@
 
 - (IBAction)sendButtonDidPress:(id)sender {
     //generate image
-    CGFloat xPos = self.lineChartView.frame.origin.x + 10;
-    CGFloat yPos = self.lineChartView.frame.origin.y;
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.lineChartView.frame.size.width + 5, self.lineChartView.frame.size.height + 5), NO, 0);
+    CGFloat xPos = _lineChartView.frame.origin.x + 10;
+    CGFloat yPos = _lineChartView.frame.origin.y;
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(_lineChartView.frame.size.width + 5, _lineChartView.frame.size.height + 5), NO, 0);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextTranslateCTM(context, -xPos, -yPos);
     [self.view.layer.presentationLayer renderInContext:context];
@@ -67,7 +67,7 @@
     //send to active conversation
     [self.activeConversation insertMessage:msg completionHandler:^(NSError *error){
         if (error != nil) {
-            self.label.text = @"failed to create msg";
+            _label.text = @"failed to create msg";
         }
     }];
     
@@ -132,7 +132,7 @@
         _currentMax = 0;
         _formatter = [[NSDateFormatter alloc] init];
         [_formatter setDateFormat:@"M/d"];
-        self.healthStore = [[HKHealthStore alloc] init];
+        _healthStore = [[HKHealthStore alloc] init];
         _shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
         
         NSString *unit = [_shared stringForKey:@"unit"];
@@ -147,17 +147,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.lineChartView setDataSource:self];
-    [self.lineChartView setDelegate:self];
-    [self.lineChartView setShowAverageLine:NO];
-    [self.lineChartView setBackgroundLineColor:[UIColor clearColor]];
+    [_lineChartView setDataSource:self];
+    [_lineChartView setDelegate:self];
+    [_lineChartView setShowAverageLine:NO];
+    [_lineChartView setBackgroundLineColor:[UIColor clearColor]];
     [self readHealthKitData];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadAfterFirstTime) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 - (void)loadAfterFirstTime {
-    [self.lineChartView setAnimated:NO];
+    [_lineChartView setAnimated:NO];
     [self readHealthKitData];
 }
 
@@ -190,7 +190,7 @@
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
     
     for (NSUInteger i = 0; i < _numberCount; i++) {
-        [arrayForLabels setObject:[_formatter stringFromDate:day] atIndexedSubscript:_numberCount - 1 - i];
+        arrayForLabels[_numberCount - 1 - i] = [_formatter stringFromDate:day];
         
         NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:day];
         components.hour = components.minute = components.second = 0;
@@ -238,11 +238,11 @@
                                          dispatch_group_leave(hkGroup);
                                      }];
         dispatch_group_enter(hkGroup);
-        [self.healthStore executeQuery:squery];
+        [_healthStore executeQuery:squery];
         dispatch_group_enter(hkGroup);
-        [self.healthStore executeQuery:fquery];
+        [_healthStore executeQuery:fquery];
         dispatch_group_enter(hkGroup);
-        [self.healthStore executeQuery:dquery];
+        [_healthStore executeQuery:dquery];
         
         day = [day dateByAddingTimeInterval: -3600 * 24];
     }
@@ -252,12 +252,12 @@
             _elementDistances = (NSArray*)arrayForDistances;
             _elementFlights = (NSArray*)arrayForFlights;
             _elementLables = (NSArray*)arrayForLabels;
-            [self.lineChartView loadDataWithSelectedKept];
+            [_lineChartView loadDataWithSelectedKept];
             [self changeTextWithNodeAtIndex:_lastSelected];
         } else if (!_errorOccurred && _currentMax <= 0) {
-            self.label.text = @"No data";
+            _label.text = @"No data";
         } else {
-            self.label.text = @"Some error occured";
+            _label.text = @"Some error occured";
         }
     });
 }
@@ -268,15 +268,15 @@
         HKQuantityType *stepType =[HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
         HKQuantityType *distanceType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceWalkingRunning];
         HKQuantityType *flightsType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierFlightsClimbed];
-        [self.healthStore requestAuthorizationToShareTypes:nil readTypes:[NSSet setWithObjects:stepType, distanceType, flightsType, nil] completion:^(BOOL success, NSError *error) {
+        [_healthStore requestAuthorizationToShareTypes:nil readTypes:[NSSet setWithObjects:stepType, distanceType, flightsType, nil] completion:^(BOOL success, NSError *error) {
             if (success) {
                 [self queryHealthData];
             } else {
-                self.label.text = @"Health Data Permission Denied";
+                _label.text = @"Health Data Permission Denied";
             }
         }];
     } else {
-        self.label.text = @"Health Data Not Available";
+        _label.text = @"Health Data Not Available";
     }
 }
 
@@ -315,7 +315,7 @@
 
 - (void)changeTextWithNodeAtIndex:(NSUInteger)index {
     NSString *result = [NSString stringWithFormat:@"\uF3BB  %.0f\n\n\uE801  %.2f %@\n\n\uF148  %.0f F", [(NSNumber*)_elementValues[index] floatValue], [(NSNumber*)_elementDistances[index] floatValue], _unit, [(NSNumber*)_elementFlights[index] floatValue]];
-    self.label.text = result;
+    _label.text = result;
 }
 
 @end

@@ -50,7 +50,7 @@
         _shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
         _formatter = [[NSDateFormatter alloc] init];
         [_formatter setDateFormat:@"M/d"];
-        self.healthStore = [[HKHealthStore alloc] init];
+        _healthStore = [[HKHealthStore alloc] init];
     }
     return self;
 }
@@ -58,9 +58,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Steps";
-    [self.unitSwitch addTarget:self action:@selector(unitSwitched:) forControlEvents:UIControlEventValueChanged];
-    [self.lineChartView setDataSource:self];
-    [self.lineChartView setDelegate:self];
+    [_unitSwitch addTarget:self action:@selector(unitSwitched:) forControlEvents:UIControlEventValueChanged];
+    [_lineChartView setDataSource:self];
+    [_lineChartView setDelegate:self];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
@@ -69,13 +69,13 @@
     if (unit != nil) {
         _unit = unit;
         if ([_unit isEqualToString:@"km"]) {
-            self.unitSwitch.on = YES;
-            self.kmLabel.textColor = [UIColor colorWithRed:0.3 green:0.85 blue:0.4 alpha:1];
-            self.miLabel.textColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
+            _unitSwitch.on = YES;
+            _kmLabel.textColor = [UIColor colorWithRed:0.3 green:0.85 blue:0.4 alpha:1];
+            _miLabel.textColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
         } else {
-            self.unitSwitch.on = NO;
-            self.miLabel.textColor = [UIColor colorWithRed:0.3 green:0.85 blue:0.4 alpha:1];
-            self.kmLabel.textColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
+            _unitSwitch.on = NO;
+            _miLabel.textColor = [UIColor colorWithRed:0.3 green:0.85 blue:0.4 alpha:1];
+            _kmLabel.textColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
         }
     } else {
         _unit = @"km";
@@ -90,7 +90,7 @@
 
 - (void)reload {
     if (!_firstTimeLoaded) {
-        [self.lineChartView setAnimated:NO];
+        [_lineChartView setAnimated:NO];
     }
     _firstTimeLoaded = NO;
     [self checkUnitState];
@@ -99,12 +99,12 @@
 
 - (void)unitSwitched:(id)sender {
     if ([sender isOn]) {
-        self.kmLabel.textColor = [UIColor colorWithRed:0.3 green:0.85 blue:0.4 alpha:1];
-        self.miLabel.textColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
+        _kmLabel.textColor = [UIColor colorWithRed:0.3 green:0.85 blue:0.4 alpha:1];
+        _miLabel.textColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
         _unit = @"km";
     } else {
-        self.miLabel.textColor = [UIColor colorWithRed:0.3 green:0.85 blue:0.4 alpha:1];
-        self.kmLabel.textColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
+        _miLabel.textColor = [UIColor colorWithRed:0.3 green:0.85 blue:0.4 alpha:1];
+        _kmLabel.textColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:1];
         _unit = @"mi";
     }
     [_shared setObject:_unit forKey:@"unit"];
@@ -142,7 +142,7 @@
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
     
     for (NSUInteger i = 0; i < _numberCount; i++) {
-        [arrayForLabels setObject:[_formatter stringFromDate:day] atIndexedSubscript:_numberCount - 1 - i];
+        arrayForLabels[_numberCount - 1 - i] = [_formatter stringFromDate:day];
         
         NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:day];
         components.hour = components.minute = components.second = 0;
@@ -190,11 +190,11 @@
                 dispatch_group_leave(hkGroup);
         }];
         dispatch_group_enter(hkGroup);
-        [self.healthStore executeQuery:squery];
+        [_healthStore executeQuery:squery];
         dispatch_group_enter(hkGroup);
-        [self.healthStore executeQuery:fquery];
+        [_healthStore executeQuery:fquery];
         dispatch_group_enter(hkGroup);
-        [self.healthStore executeQuery:dquery];
+        [_healthStore executeQuery:dquery];
         
         day = [day dateByAddingTimeInterval: -3600 * 24];
     }
@@ -204,13 +204,13 @@
             _elementDistances = (NSArray*)arrayForDistances;
             _elementFlights = (NSArray*)arrayForFlights;
             _elementLables = (NSArray*)arrayForLabels;
-            [self.lineChartView loadDataWithSelectedKept];
+            [_lineChartView loadDataWithSelectedKept];
             [self changeTextWithNodeAtIndex:_lastSelected];
-            self.statLabel.text = [NSString stringWithFormat:@"Daily Average: %.0f steps, Total: %.0f steps", [self averageValue], [self totalValue]];
+            _statLabel.text = [NSString stringWithFormat:@"Daily Average: %.0f steps, Total: %.0f steps", [self averageValue], [self totalValue]];
         } else if (!_errorOccurred && _currentMax <= 0) {
-            self.label.text = @"No data";
+            _label.text = @"No data";
         } else {
-            self.label.text = @"Some error occured";
+            _label.text = @"Some error occured";
         }
     });
 }
@@ -221,15 +221,15 @@
         HKQuantityType *stepType =[HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
         HKQuantityType *distanceType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceWalkingRunning];
         HKQuantityType *flightsType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierFlightsClimbed];
-        [self.healthStore requestAuthorizationToShareTypes:nil readTypes:[NSSet setWithObjects:stepType, distanceType, flightsType, nil] completion:^(BOOL success, NSError *error) {
+        [_healthStore requestAuthorizationToShareTypes:nil readTypes:[NSSet setWithObjects:stepType, distanceType, flightsType, nil] completion:^(BOOL success, NSError *error) {
             if (success) {
                 [self queryHealthData];
             } else {
-                self.label.text = @"Health Data Permission Denied";
+                _label.text = @"Health Data Permission Denied";
             }
         }];
     } else {
-        self.label.text = @"Health Data Not Available";
+        _label.text = @"Health Data Not Available";
     }
 }
 
@@ -272,7 +272,7 @@
 
 - (void)changeTextWithNodeAtIndex:(NSUInteger)index {
     NSString *result = [NSString stringWithFormat:@"\uF3BB  %.0f   \uE801  %.2f %@   \uF148  %.0f F", [(NSNumber*)_elementValues[index] floatValue], [(NSNumber*)_elementDistances[index] floatValue], _unit, [(NSNumber*)_elementFlights[index] floatValue]];
-    self.label.text = result;
+    _label.text = result;
 }
 
 @end
