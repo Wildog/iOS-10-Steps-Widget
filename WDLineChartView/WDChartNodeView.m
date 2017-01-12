@@ -39,6 +39,10 @@
     }
     nodeShape.strokeColor = [UIColor whiteColor].CGColor;
     nodeShape.lineWidth = 2;
+    
+    CGPathRef shadow = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(rect.origin.x + rect.size.width / 4, rect.origin.y + rect.size.height / 4 , rect.size.width / 2, rect.size.height / 2)].CGPath;
+    [nodeShape setShadowPath:shadow];
+    
     nodeShape.shadowColor = _shadowColor.CGColor;
     nodeShape.shadowOpacity = 0.5;
     nodeShape.shadowOffset = CGSizeMake(0, 0.5);
