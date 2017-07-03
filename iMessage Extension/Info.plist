@@ -31,6 +31,8 @@
 	<string>Allow Steps Widget to read your daily steps?</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>Allow Steps Widget to modify your health data?</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Allow Steps Widget to read your motion data to count daily steps?</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>healthkit</string>

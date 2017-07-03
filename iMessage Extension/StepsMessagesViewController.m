@@ -7,7 +7,8 @@
 //
 
 #import "StepsMessagesViewController.h"
-#import <HealthKit/HealthKit.h>
+//#import <HealthKit/HealthKit.h>
+#import <CoreMotion/CoreMotion.h>
 #import "WDLineChartView.h"
 
 @interface StepsMessagesViewController () <WDLineChartViewDataSource, WDLineChartViewDelegate> {
@@ -17,7 +18,7 @@
     NSArray *_elementFlights;
     NSUInteger _numberCount;
     NSUInteger _lastSelected;
-    CGFloat _currentMax;
+    NSInteger _currentMax;
     NSDateFormatter *_formatter;
     NSString *_unit;
     NSUserDefaults *_shared;
@@ -27,7 +28,8 @@
 @property (weak, nonatomic) IBOutlet WDLineChartView *lineChartView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
-@property (nonatomic, strong) HKHealthStore *healthStore;
+//@property (nonatomic, strong) HKHealthStore *healthStore;
+@property (nonatomic, strong) CMPedometer *pedometer;
 
 @end
 
@@ -37,12 +39,13 @@
 
 - (IBAction)sendButtonDidPress:(id)sender {
     //generate image
-    CGFloat xPos = _lineChartView.frame.origin.x + 10;
-    CGFloat yPos = _lineChartView.frame.origin.y;
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(_lineChartView.frame.size.width + 5, _lineChartView.frame.size.height + 5), NO, 0);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextTranslateCTM(context, -xPos, -yPos);
-    [self.view.layer.presentationLayer renderInContext:context];
+    //CGFloat xPos = _lineChartView.frame.origin.x + 10;
+    //CGFloat yPos = _lineChartView.frame.origin.y;
+    UIGraphicsBeginImageContextWithOptions(_lineChartView.bounds.size, NO, 0);
+    //CGContextRef context = UIGraphicsGetCurrentContext();
+    //CGContextTranslateCTM(context, -xPos, -yPos);
+    //[self.view.layer.presentationLayer renderInContext:context];
+    [_lineChartView drawViewHierarchyInRect:_lineChartView.bounds afterScreenUpdates:NO];
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -132,8 +135,9 @@
         _currentMax = 0;
         _formatter = [[NSDateFormatter alloc] init];
         [_formatter setDateFormat:@"M/d"];
-        _healthStore = [[HKHealthStore alloc] init];
-        _shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.dog.wil.steps"];
+        //_healthStore = [[HKHealthStore alloc] init];
+        _pedometer = [[CMPedometer alloc] init];
+        _shared = [[NSUserDefaults alloc] initWithSuiteName:@"group.wil.dog.iSteps"];
         
         NSString *unit = [_shared stringForKey:@"unit"];
         if (unit != nil) {
@@ -182,9 +186,9 @@
     
     dispatch_group_t hkGroup = dispatch_group_create();
     
-    HKQuantityType *stepType =[HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
-    HKQuantityType *distanceType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceWalkingRunning];
-    HKQuantityType *flightsType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierFlightsClimbed];
+    //HKQuantityType *stepType =[HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
+    //HKQuantityType *distanceType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceWalkingRunning];
+    //HKQuantityType *flightsType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierFlightsClimbed];
     
     NSDate *day = [NSDate date];
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
@@ -201,48 +205,64 @@
             components.minute = components.second = 0;
             endDate = [calendar dateFromComponents:components];
         }
-        NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:beginDate endDate:endDate options:HKQueryOptionStrictStartDate];
-        
-        HKStatisticsQuery *squery = [[HKStatisticsQuery alloc]
-                                     initWithQuantityType:stepType
-                                     quantitySamplePredicate:predicate
-                                     options:HKStatisticsOptionCumulativeSum
-                                     completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
-                                         if (error != nil) _errorOccurred = YES;
-                                         HKQuantity *quantity = result.sumQuantity;
-                                         double step = [quantity doubleValueForUnit:[HKUnit countUnit]];
-                                         [arrayForValues setObject:[NSNumber numberWithDouble:step] atIndexedSubscript:_numberCount - 1 - i];
-                                         if (step > _currentMax) _currentMax = step;
-                                         dispatch_group_leave(hkGroup);
-                                     }];
-        HKStatisticsQuery *fquery = [[HKStatisticsQuery alloc]
-                                     initWithQuantityType:flightsType
-                                     quantitySamplePredicate:predicate
-                                     options:HKStatisticsOptionCumulativeSum
-                                     completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
-                                         if (error != nil) _errorOccurred = YES;
-                                         HKQuantity *quantity = result.sumQuantity;
-                                         double flight = [quantity doubleValueForUnit:[HKUnit countUnit]];
-                                         [arrayForFlights setObject:[NSNumber numberWithDouble:flight] atIndexedSubscript:_numberCount - 1 - i];
-                                         dispatch_group_leave(hkGroup);
-                                     }];
-        HKStatisticsQuery *dquery = [[HKStatisticsQuery alloc]
-                                     initWithQuantityType:distanceType
-                                     quantitySamplePredicate:predicate
-                                     options:HKStatisticsOptionCumulativeSum
-                                     completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
-                                         if (error != nil) _errorOccurred = YES;
-                                         HKQuantity *quantity = result.sumQuantity;
-                                         double distance = [quantity doubleValueForUnit:[HKUnit unitFromString:_unit]];
-                                         [arrayForDistances setObject:[NSNumber numberWithDouble:distance] atIndexedSubscript:_numberCount - 1 - i];
-                                         dispatch_group_leave(hkGroup);
-                                     }];
+        // switch from HealthKit to CoreMotion due to its realtime updates and fast data retrieval
         dispatch_group_enter(hkGroup);
-        [_healthStore executeQuery:squery];
-        dispatch_group_enter(hkGroup);
-        [_healthStore executeQuery:fquery];
-        dispatch_group_enter(hkGroup);
-        [_healthStore executeQuery:dquery];
+        [self.pedometer queryPedometerDataFromDate:beginDate toDate:endDate withHandler:^(CMPedometerData * _Nullable pedometerData, NSError * _Nullable error) {
+            if (error != nil) _errorOccurred = YES;
+            arrayForValues[_numberCount - 1 - i] = pedometerData.numberOfSteps ? pedometerData.numberOfSteps : @(0);
+            arrayForFlights[_numberCount - 1 - i] = pedometerData.floorsAscended ? pedometerData.floorsAscended : @(0);
+            if ([_unit isEqualToString:@"km"]) {
+                arrayForDistances[_numberCount - 1 - i] = @(pedometerData.distance.doubleValue / 1000.0);
+            } else {
+                arrayForDistances[_numberCount - 1 - i] = @(pedometerData.distance.doubleValue * 0.000621371);
+            }
+            if (pedometerData.numberOfSteps.integerValue > _currentMax) {
+                _currentMax = pedometerData.numberOfSteps.integerValue;
+            }
+            dispatch_group_leave(hkGroup);
+        }];
+        //NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:beginDate endDate:endDate options:HKQueryOptionStrictStartDate];
+        //
+        //HKStatisticsQuery *squery = [[HKStatisticsQuery alloc]
+        //                             initWithQuantityType:stepType
+        //                             quantitySamplePredicate:predicate
+        //                             options:HKStatisticsOptionCumulativeSum
+        //                             completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
+        //        if (error != nil) _errorOccurred = YES;
+        //        HKQuantity *quantity = result.sumQuantity;
+        //        double step = [quantity doubleValueForUnit:[HKUnit countUnit]];
+        //        [arrayForValues setObject:[NSNumber numberWithDouble:step] atIndexedSubscript:_numberCount - 1 - i];
+        //        if (step > _currentMax) _currentMax = step;
+        //        dispatch_group_leave(hkGroup);
+        //}];
+        //HKStatisticsQuery *fquery = [[HKStatisticsQuery alloc]
+        //                             initWithQuantityType:flightsType
+        //                             quantitySamplePredicate:predicate
+        //                             options:HKStatisticsOptionCumulativeSum
+        //                             completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
+        //        if (error != nil) _errorOccurred = YES;
+        //        HKQuantity *quantity = result.sumQuantity;
+        //        double flight = [quantity doubleValueForUnit:[HKUnit countUnit]];
+        //        [arrayForFlights setObject:[NSNumber numberWithDouble:flight] atIndexedSubscript:_numberCount - 1 - i];
+        //        dispatch_group_leave(hkGroup);
+        //}];
+        //HKStatisticsQuery *dquery = [[HKStatisticsQuery alloc]
+        //                             initWithQuantityType:distanceType
+        //                             quantitySamplePredicate:predicate
+        //                             options:HKStatisticsOptionCumulativeSum
+        //                             completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
+        //        if (error != nil) _errorOccurred = YES;
+        //        HKQuantity *quantity = result.sumQuantity;
+        //        double distance = [quantity doubleValueForUnit:[HKUnit unitFromString:_unit]];
+        //        [arrayForDistances setObject:[NSNumber numberWithDouble:distance] atIndexedSubscript:_numberCount - 1 - i];
+        //        dispatch_group_leave(hkGroup);
+        //}];
+        //dispatch_group_enter(hkGroup);
+        //[_healthStore executeQuery:squery];
+        //dispatch_group_enter(hkGroup);
+        //[_healthStore executeQuery:fquery];
+        //dispatch_group_enter(hkGroup);
+        //[_healthStore executeQuery:dquery];
         
         day = [day dateByAddingTimeInterval: -3600 * 24];
     }
@@ -257,27 +277,32 @@
         } else if (!_errorOccurred && _currentMax <= 0) {
             _label.text = @"No data";
         } else {
-            _label.text = @"Some error occured";
+            _label.text = @"Motion data not accessible";
         }
     });
 }
 
 - (void)readHealthKitData
 {
-    if ([HKHealthStore isHealthDataAvailable]) {
-        HKQuantityType *stepType =[HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
-        HKQuantityType *distanceType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceWalkingRunning];
-        HKQuantityType *flightsType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierFlightsClimbed];
-        [_healthStore requestAuthorizationToShareTypes:nil readTypes:[NSSet setWithObjects:stepType, distanceType, flightsType, nil] completion:^(BOOL success, NSError *error) {
-            if (success) {
-                [self queryHealthData];
-            } else {
-                _label.text = @"Health Data Permission Denied";
-            }
-        }];
-    } else {
-        _label.text = @"Health Data Not Available";
+    //if ([HKHealthStore isHealthDataAvailable]) {
+    //    HKQuantityType *stepType =[HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
+    //    HKQuantityType *distanceType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierDistanceWalkingRunning];
+    //    HKQuantityType *flightsType = [HKQuantityType quantityTypeForIdentifier:HKQuantityTypeIdentifierFlightsClimbed];
+    //    [_healthStore requestAuthorizationToShareTypes:nil readTypes:[NSSet setWithObjects:stepType, distanceType, flightsType, nil] completion:^(BOOL success, NSError *error) {
+    //        if (success) {
+    //            [self queryHealthData];
+    //        } else {
+    //            _label.text = @"Health Data Permission Denied";
+    //        }
+    //    }];
+    //} else {
+    //    _label.text = @"Health Data Not Available";
+    //}
+    if (![CMPedometer isStepCountingAvailable] || ![CMPedometer isFloorCountingAvailable] || ![CMPedometer isDistanceAvailable]) {
+        _label.text = @"Motion Data Not Available";
+        return;
     }
+    [self queryHealthData];
 }
 
 #pragma mark - LineChartViewDataSource methods
